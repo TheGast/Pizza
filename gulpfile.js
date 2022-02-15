@@ -105,8 +105,7 @@ const fonts = function(){
     .pipe(Newer("./public/img"))
     // .pipe(GulpFonter({
     //   formats: ["ttf", "woff"]
-    // }))
-    .pipe(dest("./public/font"))
+    // }))    
     .pipe(Ttf2Woff2())
     .pipe(dest("./public/font"));   
 
