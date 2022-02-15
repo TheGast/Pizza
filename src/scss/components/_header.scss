@@ -1,0 +1,50 @@
+.header{
+  &__container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }  
+
+  &__row{
+    border-bottom: 1px solid #f0f0f0;
+
+    &--top{
+      padding: 10px 0;      
+    }
+
+    &--bottom{
+      padding: 12px 0;
+    }
+  }
+
+  &__row-column{
+    display: flex;
+    align-items: center;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+
+  &__city-list{
+    margin-right: 40px;
+  }
+
+  &__check-adress{
+    margin-right: 40px;
+  }
+
+  &__delivery-time{   
+    & span{
+      font-weight: 600;
+    }
+  }
+
+  &__time-work{
+    margin-right: 40px;
+  }
+}
+
+.btn-cart{
+  padding: 9px 16px;
+}
