@@ -1,0 +1,53 @@
+.production-items {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px;
+}
+.production-item {
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;	
+	background: $white;
+	border: 1px solid $gallery;
+	border-radius: 12px;
+
+	&__img {
+		margin-bottom: 14px;
+	}
+
+	&__wrapper {
+		padding: 0 20px 20px 19px;
+	}
+
+	&__title {	
+		display: block;
+		flex-grow: 1;
+		margin: 0;
+		margin-bottom: 13px;
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 24px;
+	}
+
+	&__descr {
+		height: 44px;
+		overflow-y: hidden;
+		margin-bottom: 15px;
+		line-height: 22px;
+	}
+
+	&__bottom {
+		margin-top: auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__price {
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 24px;
+		color: $pumpkin;
+	}
+}

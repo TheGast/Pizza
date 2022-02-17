@@ -30,6 +30,7 @@ body{
 
 img{
 	width: 100%;
+	object-fit: cover;
 }
 
 ul{
@@ -82,5 +83,19 @@ p{
 	font-family: "SF-Pro-Text", sans-serif;
 	font-weight: 400;
 	color: #fff;
+}
+
+.section-top{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.section-title{
+	margin: 0;
+	font-family: "Inter", serif;
+	font-weight: 600;
+	font-size: 40px;
+	line-height: 48px;
 }
 

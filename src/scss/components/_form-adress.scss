@@ -1,0 +1,50 @@
+.form-adress {
+	margin-bottom: 23px;
+	
+	&__label{
+		display: flex;
+		align-items: center;
+		padding: 15px 32px 15px 31px;
+		background: $white;
+		border: 1px solid $gallery;
+		border-radius: 8px;
+	}
+
+	&__text {
+		margin-right: 32px;
+		font-size: 18px;
+		line-height: 24px;
+		color: $gray;
+	}
+
+	&__input {
+		position: relative;
+		flex-grow: 1;
+		margin-right: 20px;
+
+		&::before{
+			position: absolute;
+			content: "";
+			background-image: url("../img/icons/location.svg");
+			background-repeat: no-repeat;
+			width: 20px;
+			height: 20px;
+			top: 13px;
+			left: 13px;
+		}
+
+		input{
+			width: 100%;	
+			padding: 15px 15px 15px 40px;
+			border: 1px solid $gallery;
+			border-radius: 6px;
+
+			&::placeholder{
+				font-family: "SF-Pro-Text", sans-serif;
+				font-size: 16px;
+				line-height: 22px;
+				color: #A5A5A5;
+			}
+		}
+	}
+}
