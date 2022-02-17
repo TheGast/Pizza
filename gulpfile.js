@@ -18,7 +18,7 @@ const ImageMin = require("gulp-imagemin");
 const Newer = require("gulp-newer");
 const GulpFonter = require("gulp-fonter");
 const Ttf2Woff2 = require("gulp-ttf2woff2");
-//const SpriteSvg = require("gulp-svg-sprite");
+const SpriteSvg = require("gulp-svg-sprite");
 
 
 //Обработка HTML
@@ -52,7 +52,7 @@ const scss = function(){
 
 //Обработка IMAGES
 const images = function(){
-  return src("./src/img/**/*.{jpg,png,jpeg,gif,svg}")
+  return src(["./src/img/**/*.{jpg,png,jpeg,gif,svg}", "!./src/img/svg/**/*"])
     .pipe(Plumber())
     .pipe(Newer("./public/img"))
     .pipe(ImageMin({
@@ -61,42 +61,42 @@ const images = function(){
     .pipe(dest("./public/img"));   
 }
 
-// const spritesvg = function(){
-//   return src("./src/img/svg/**/*.svg")
-//   .pipe(SpriteSvg({
-//     shape: {
-//       dimension: {
-//           maxWidth: 500,
-//           maxHeight: 500
-//       },
-//       spacing: {
-//           padding: 0
-//       },
-//       transform: [{
-//           "svgo": {
-//               "plugins": [
-//                   { removeViewBox: false },
-//                   { removeUnusedNS: false },
-//                   { removeUselessStrokeAndFill: true },
-//                   { cleanupIDs: false },
-//                   { removeComments: true },
-//                   { removeEmptyAttrs: true },
-//                   { removeEmptyText: true },
-//                   { collapseGroups: true },
-//                   { removeAttrs: { attrs: '(fill|stroke|style)' } }
-//               ]
-//           }
-//       }]
-//   },
-//   mode: {
-//       symbol: {
-//           dest : '.',
-//           sprite: 'sprite.svg'
-//       }
-//   }
-//   }))
-//   .pipe(dest("./public/img")); 
-// }
+const spritesvg = function(){
+  return src("./src/img/svg/**/*.svg")
+  .pipe(SpriteSvg({
+    shape: {
+      dimension: {
+          maxWidth: 500,
+          maxHeight: 500
+      },
+      spacing: {
+          padding: 0
+      },
+      transform: [{
+          "svgo": {
+              "plugins": [
+                  { removeViewBox: false },
+                  { removeUnusedNS: false },
+                  { removeUselessStrokeAndFill: true },
+                  { cleanupIDs: false },
+                  { removeComments: true },
+                  { removeEmptyAttrs: true },
+                  { removeEmptyText: true },
+                  { collapseGroups: true },
+                  { removeAttrs: { attrs: '(fill|stroke|style)' } }
+              ]
+          }
+      }]
+  },
+  mode: {
+      symbol: {
+          dest : '.',
+          sprite: 'sprite.svg'
+      }
+  }
+  }))
+  .pipe(dest("./public/img")); 
+}
 
 //Обработка FONTS
 const fonts = function(){
@@ -129,7 +129,7 @@ const server = function(){
 const watcher = function(){
   watch("./src/html/**/*.html", html);
   watch("./src/scss/**/*.scss", scss);
-  watch("./src/img/**/*.{jpg,jpeg,png,gif,svg}", images);
+  watch("./src/img/**/*.{jpg,jpeg,png,gif,svg}", series(images, spritesvg));
   watch("./src/font/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}", fonts); 
 }
 
@@ -140,17 +140,17 @@ exports.clear = clear;
 exports.scss = scss;
 exports.images = images;
 exports.font = fonts;
-//exports.spritesvg = spritesvg;
+exports.spritesvg = spritesvg;
 
 //Сборка
 exports.dev = series(
   clear,
-  parallel(html, scss, images, fonts),
+  parallel(html, scss, images, spritesvg, fonts),
   parallel(watcher, server)
 );
 
 //Продакшн
 exports.build = series(
   clear,
-  parallel(html, scss, images, fonts),  
+  parallel(html, scss, images, spritesvg, fonts),  
 );

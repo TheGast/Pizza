@@ -1,0 +1,49 @@
+.navigation {  
+  padding-top: 30px;
+  margin-bottom: 30px; 
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item {
+    max-width: 135px;
+    width: 100%;
+    background: $white;
+    border: 1px solid $gallery;
+    border-radius: 12px;
+  }
+  &__item-btn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 19px 10px;  
+    color: $gray;
+    transition: all 0.2s ease;
+    
+    &:hover{
+      color:$cinnabar;
+      .navigation__item-img{
+        fill: $cinnabar;
+      }
+    }
+  }
+
+  &__item-img {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    fill: $pumpkin; 
+    transition: all 0.2s ease; 
+  }
+
+  &__item-text {
+    font-family: "SF-Pro-Text", sans serif;
+    font-size: 18px;
+    line-height: 24px;    
+  }
+}
+
+

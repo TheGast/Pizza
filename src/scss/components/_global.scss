@@ -12,7 +12,7 @@ body{
 	box-sizing: border-box;
 }
 
-*,
+
 *::before,
 *::after{
 	box-sizing: inherit;
@@ -25,10 +25,22 @@ body{
 	font-family: "SF-Pro-Text", sans-serif;
 	font-weight: 400;
 	font-size: 16px;	
+	color: $gray;
 }
 
 img{
 	width: 100%;
+}
+
+ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
 }
 
 p{
@@ -49,7 +61,8 @@ p{
 
 .container{
 	max-width: 1320px;
-	margin: 0 auto;	
+	padding: 0 15px;
+	margin: 0 auto;		
 }
 
 .btn-reset{
@@ -62,7 +75,7 @@ p{
 
 .btn{
 	padding: 13px 32px;	
-	background: #FF7010;
+	background: $pumpkin;
 	border-radius: 4px;
 	font-size: 16px;
 	line-height: 22px;
