@@ -1,72 +1,70 @@
 // Обнуление стилей
 html,
-body{
+body {
 	height: 100%;
 }
 
-body{
+body {
 	margin: 0;
 }
 
-*{
+* {
 	box-sizing: border-box;
 }
 
-
 *::before,
-*::after{
+*::after {
 	box-sizing: inherit;
 }
 
-
 // Глобальные настройки
 
-body{
+body {
 	font-family: "SF-Pro-Text", sans-serif;
 	font-weight: 400;
-	font-size: 16px;	
+	font-size: 16px;
 	color: $gray;
 }
 
-img{
+img {
 	width: 100%;
 	object-fit: cover;
 }
 
-ul{
+ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-a{
+a {
 	text-decoration: none;
 	color: inherit;
 }
 
-p{
+p {
 	margin: 0;
 }
 
-.site-wrapper{
+.site-wrapper {
 	min-height: 100%;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 }
 
-.main{
+.main {
 	flex-grow: 1;
 	background-color: #f9f9f9;
 }
 
-.container{
+.container {
 	max-width: 1320px;
 	padding: 0 15px;
-	margin: 0 auto;		
+	margin: 0 auto;
 }
 
-.btn-reset{
+.btn-reset {
 	padding: 0;
 	margin: 0;
 	border: none;
@@ -74,8 +72,8 @@ p{
 	cursor: pointer;
 }
 
-.btn{
-	padding: 13px 32px;	
+.btn {
+	padding: 13px 32px;
 	background: $pumpkin;
 	border-radius: 4px;
 	font-size: 16px;
@@ -83,15 +81,20 @@ p{
 	font-family: "SF-Pro-Text", sans-serif;
 	font-weight: 400;
 	color: #fff;
+	transition: all 0.2s ease;
+
+	&:hover{
+		background-color: $cinnabar;
+	}
 }
 
-.section-top{
+.section-top {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
 
-.section-title{
+.section-title {
 	margin: 0;
 	font-family: "Inter", serif;
 	font-weight: 600;
@@ -99,3 +102,30 @@ p{
 	line-height: 48px;
 }
 
+.new,
+.hit{
+	&::before{
+		position: absolute;
+		width: 65px;
+		height: 32px;
+		background-color: $cinnabar;
+		text-transform: uppercase;
+		font-size: 14px;
+		line-height: 32px;
+		text-align: center;
+		color: $white;
+		border-radius: 0 6px 6px 0;
+		top: 20px;
+		left: -1px;
+	}
+}
+.new {
+	&::before {
+		content: "new";
+	}
+}
+.hit {
+	&::before {
+		content: "хит";
+	}
+}

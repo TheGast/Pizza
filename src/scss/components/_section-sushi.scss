@@ -1,0 +1,11 @@
+.sushi {
+  margin-bottom: 50px;
+
+  &__top {
+    margin-bottom: 28px;
+  }
+}
+
+.sushi-item__descr {
+  -webkit-line-clamp: 2; /* количество строк */
+}

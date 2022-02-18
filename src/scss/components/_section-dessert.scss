@@ -1,0 +1,11 @@
+.dessert{
+  margin-bottom: 15px;
+
+  &__top{
+    margin-bottom: 28px;
+  }
+}
+
+.dessert-item__descr {
+  -webkit-line-clamp: 2; /* количество строк */
+}

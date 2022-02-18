@@ -1,0 +1,11 @@
+.snack{
+  margin-bottom: 50px;
+
+  &__top{
+    margin-bottom: 28px;
+  }
+}
+
+.snack-item__descr {
+  -webkit-line-clamp: 2; /* количество строк */
+}

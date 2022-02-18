@@ -3,11 +3,13 @@
 	flex-wrap: wrap;
 	gap: 30px;
 }
+
 .production-item {
+	position: relative;
 	max-width: 300px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;	
+	align-items: center;
 	background: $white;
 	border: 1px solid $gallery;
 	border-radius: 12px;
@@ -17,11 +19,13 @@
 	}
 
 	&__wrapper {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
 		padding: 0 20px 20px 19px;
 	}
 
-	&__title {	
-		display: block;
+	&__title {
 		flex-grow: 1;
 		margin: 0;
 		margin-bottom: 13px;
@@ -31,14 +35,17 @@
 	}
 
 	&__descr {
-		height: 44px;
-		overflow-y: hidden;
-		margin-bottom: 15px;
+		max-height: 44px;
+		overflow: hidden;
+		margin-bottom: 13px;
 		line-height: 22px;
+		display: -webkit-box;
+		-webkit-line-clamp: 1; /* количество строк */
+		-webkit-box-orient: vertical;
+		text-overflow: ellipsis;
 	}
 
 	&__bottom {
-		margin-top: auto;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
