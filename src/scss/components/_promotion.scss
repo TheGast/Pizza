@@ -1,7 +1,7 @@
 .promotion {
   margin-bottom: 38px; 
 
-  @media (max-width: $mw-390) {
+  @media (max-width: $mw-767) {
     margin-bottom: 33px;
   }
   
@@ -9,7 +9,7 @@
     display: flex;
     justify-content: space-between;
     
-    @media (max-width: $mw-390) {
+    @media (max-width: $mw-1199) {
       overflow-x: scroll;
     }
   }
@@ -24,14 +24,14 @@
   background-color: $pumpkin;
   transition: transform 0.2s ease;
   
-  @media (max-width: $mw-390) {
+  @media (max-width: $mw-1199) {
     flex-shrink: 0;
     max-width: 280px;
     min-height: 320px; 
   }
 
   &:not(:last-child){
-    @media (max-width: $mw-390) {
+    @media (max-width: $mw-1199) {
      margin-right: 20px;
     }
   }

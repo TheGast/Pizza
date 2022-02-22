@@ -1,7 +1,7 @@
 .form-adress {
 	margin-bottom: 23px;
 
-	@media (max-width: $mw-390) {
+	@media (max-width: $mw-991) {
 		margin-bottom: 32px;
 	}
 
@@ -13,7 +13,7 @@
 		border: 1px solid $gallery;
 		border-radius: 8px;
 
-		@media (max-width: $mw-390) {
+		@media (max-width: $mw-1199) {
 			flex-wrap: wrap;
 			padding-top: 23px;
 			padding-bottom: 20px;
@@ -33,12 +33,22 @@
 		line-height: 24px;
 		color: $gray;
 
-		@media (max-width: $mw-390) {
+		@media (max-width: $mw-1199) {
 			width: 100%;
 			margin-bottom: 14px;
 			margin-right: 0;
 			text-align: center;
 			font-weight: 600;
+			font-size: 20px;
+			line-height: 24px;
+		}
+
+		@media (max-width: $mw-767) {
+			font-size: 18px;
+			line-height: 24px;
+		}
+
+		@media (max-width: $mw-575) {
 			font-size: 16px;
 			line-height: 20px;
 		}
@@ -49,7 +59,7 @@
 		flex-grow: 1;
 		margin-right: 20px;
 
-		@media (max-width: $mw-390) {
+		@media (max-width: $mw-991) {
 			margin-right: 0;
 		}
 
@@ -63,7 +73,7 @@
 			top: 13px;
 			left: 13px;
 
-			@media (max-width: $mw-390) {
+			@media (max-width: $mw-991) {
 				left: 12px;
 				top: 12px;
 			}
@@ -75,7 +85,7 @@
 			border: 1px solid $gallery;
 			border-radius: 6px;
 
-			@media (max-width: $mw-390) {
+			@media (max-width: $mw-575) {
 				padding: 14px 15px 14px 38px;
 			}
 
@@ -89,7 +99,12 @@
 	}
 
 	&__btn{
-		@media (max-width: $mw-390) {
+		@media (max-width: $mw-991) {
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+
+		@media (max-width: $mw-767) {
 			display: none;
 		}
 	}
@@ -98,9 +113,10 @@
 		position: absolute;
 		right: 0;
 		top: 0;
+		bottom: 0;
 		display: none;
 		align-items: center;
-		padding: 14px 14px;
+		padding: 5px 20px;
 
 		svg{
 			width: 16px;
@@ -108,8 +124,12 @@
 			fill: $white;
 		}
 
-		@media (max-width: $mw-390) {
-			display: flex;		
+		@media (max-width: $mw-767) {
+			display: flex;	
+		}
+
+		@media (max-width: $mw-575) {
+			padding: 5px 14px;		
 		}
 	}
 }

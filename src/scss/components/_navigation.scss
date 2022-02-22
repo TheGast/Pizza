@@ -2,7 +2,7 @@
   padding-top: 30px;
   margin-bottom: 30px; 
 
-  @media (max-width: $mw-390) {
+  @media (max-width: $mw-575) {
     padding-top: 22px;
     margin-bottom: 20px;
   }
@@ -11,7 +11,7 @@
     display: flex;
     justify-content: space-between;
     
-    @media (max-width: $mw-390) {
+    @media (max-width: $mw-991) {
       overflow-x: scroll;
     }
   }
@@ -23,18 +23,17 @@
     border: 1px solid $gallery;
     border-radius: 12px;
 
-    @media (max-width: $mw-390) {
+    @media (max-width: $mw-767) {
       border-radius: 6px;
     }
 
-   
-
     &:not(:last-child){
-      @media (max-width: $mw-390) {
+      @media (max-width: $mw-1199) {
         margin-right: 12px;
       }
     }
   }
+
   &__item-btn {
     width: 100%;
     display: flex;
@@ -44,7 +43,11 @@
     color: $gray;
     transition: all 0.2s ease;
 
-    @media (max-width: $mw-390) {
+    @media (max-width: $mw-991) {
+      padding: 7px 18px;
+    }
+
+    @media (max-width: $mw-767) {
       flex-direction: row;
       padding: 7px 11px;
     }
@@ -64,11 +67,14 @@
     fill: $pumpkin; 
     transition: all 0.2s ease; 
 
-    @media (max-width: $mw-390) {
-      width: 24px;
-      height: 24px;
+    @media (max-width: $mw-767) {
       margin-bottom: 0;
       margin-right: 8px;
+    }
+
+    @media (max-width: $mw-575) {
+      width: 24px;
+      height: 24px;
     }
   }
 
@@ -77,7 +83,7 @@
     font-size: 18px;
     line-height: 24px;  
     
-    @media (max-width: $mw-390) {
+    @media (max-width: $mw-575) {
       font-size: 14px;
       line-height: 18px;
     }

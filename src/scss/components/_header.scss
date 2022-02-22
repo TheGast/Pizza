@@ -25,13 +25,13 @@
     font-weight: 400;
     line-height: 18px;
 
-    @media (max-width: $mw-390) {
+    @media (max-width: $mw-991) {
       width: 100%;
       justify-content: space-between;
     }
 
     &--topright {
-      @media (max-width: $mw-390) {
+      @media (max-width: $mw-991) {
         display: none;
       }
     }
@@ -43,7 +43,7 @@
     padding-left: 28px;
     padding-right: 20px;
 
-    @media (max-width: $mw-390) {
+    @media (max-width: $mw-767) {
       padding-right: 0;
       padding-left: 24px;
       margin-right: 0;
@@ -74,7 +74,7 @@
       top: 6px;
       right: 0;
 
-      @media (max-width: $mw-390) {
+      @media (max-width: $mw-767) {
         display: none;
       }
     }
@@ -83,7 +83,12 @@
   &__check-adress {
     margin-right: 41px;
 
-    @media (max-width: $mw-390) {
+    @media (max-width: $mw-767) {
+      font-size: 12px;
+      line-height: 14px;
+    }
+
+    @media (max-width: $mw-767) {
       display: none;
     }
   }
@@ -93,7 +98,7 @@
       font-weight: 600;
     }
 
-    @media (max-width: $mw-390) {
+    @media (max-width: $mw-767) {
       font-size: 12px;
       line-height: 16px;
     }
@@ -101,6 +106,10 @@
 
   &__time-work {
     margin-right: 41px;
+
+    @media (max-width: $mw-1199) {
+      margin-right: 21px;
+    }
   }
 
   &__btn-login {
@@ -136,7 +145,7 @@
   align-items: center;
   padding: 9px 16px 7px 16px;
 
-  @media (max-width: $mw-390) {
+  @media (max-width: $mw-991) {
     display: none;
   }
 
