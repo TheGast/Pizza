@@ -2,9 +2,18 @@
   padding-top: 30px;
   margin-bottom: 30px; 
 
+  @media (max-width: $mw-390) {
+    padding-top: 22px;
+    margin-bottom: 20px;
+  }
+
   &__list {
     display: flex;
     justify-content: space-between;
+    
+    @media (max-width: $mw-390) {
+      overflow-x: scroll;
+    }
   }
 
   &__item {
@@ -13,6 +22,18 @@
     background: $white;
     border: 1px solid $gallery;
     border-radius: 12px;
+
+    @media (max-width: $mw-390) {
+      border-radius: 6px;
+    }
+
+   
+
+    &:not(:last-child){
+      @media (max-width: $mw-390) {
+        margin-right: 12px;
+      }
+    }
   }
   &__item-btn {
     width: 100%;
@@ -22,6 +43,11 @@
     padding: 19px 10px;  
     color: $gray;
     transition: all 0.2s ease;
+
+    @media (max-width: $mw-390) {
+      flex-direction: row;
+      padding: 7px 11px;
+    }
     
     &:hover{
       color:$cinnabar;
@@ -37,12 +63,24 @@
     margin-bottom: 8px;
     fill: $pumpkin; 
     transition: all 0.2s ease; 
+
+    @media (max-width: $mw-390) {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 0;
+      margin-right: 8px;
+    }
   }
 
   &__item-text {
     font-family: "SF-Pro-Text", sans serif;
     font-size: 18px;
-    line-height: 24px;    
+    line-height: 24px;  
+    
+    @media (max-width: $mw-390) {
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 }
 

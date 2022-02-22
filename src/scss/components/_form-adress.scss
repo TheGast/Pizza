@@ -1,13 +1,24 @@
 .form-adress {
 	margin-bottom: 23px;
-	
-	&__label{
+
+	&__wrapper{
 		display: flex;
 		align-items: center;
-		padding: 15px 32px 15px 31px;
+		padding: 15px 19px 15px 19px;
 		background: $white;
 		border: 1px solid $gallery;
 		border-radius: 8px;
+
+		@media (max-width: $mw-390) {
+			flex-wrap: wrap;
+			padding-top: 23px;
+		}
+	}
+
+	&__label {
+		display: flex;
+		align-items: center;
+		flex-grow: 1;
 	}
 
 	&__text {
@@ -15,6 +26,16 @@
 		font-size: 18px;
 		line-height: 24px;
 		color: $gray;
+
+		@media (max-width: $mw-390) {
+			width: 100%;
+			margin-bottom: 14px;
+			margin-right: 0;
+			text-align: center;
+			font-weight: 600;
+			font-size: 16px;
+			line-height: 20px;
+		}
 	}
 
 	&__input {
@@ -22,7 +43,11 @@
 		flex-grow: 1;
 		margin-right: 20px;
 
-		&::before{
+		@media (max-width: $mw-390) {
+			margin-right: 0;
+		}
+
+		&::before {
 			position: absolute;
 			content: "";
 			background-image: url("../img/icons/location.svg");
@@ -31,20 +56,51 @@
 			height: 20px;
 			top: 13px;
 			left: 13px;
+
+			@media (max-width: $mw-390) {
+				left: 12px;
+				top: 12px;
+			}
 		}
 
-		input{
-			width: 100%;	
+		input {
+			width: 100%;
 			padding: 15px 15px 15px 40px;
 			border: 1px solid $gallery;
 			border-radius: 6px;
 
-			&::placeholder{
+			@media (max-width: $mw-390) {
+				padding: 14px 15px 14px 38px;
+			}
+
+			&::placeholder {
 				font-family: "SF-Pro-Text", sans-serif;
 				font-size: 16px;
 				line-height: 22px;
-				color: #A5A5A5;
+				color: #a5a5a5;
 			}
+		}
+	}
+
+	&__btn{
+		@media (max-width: $mw-390) {
+			display: none;
+		}
+	}
+
+	&__btn-mobile{
+		display: none;
+		align-items: center;
+		padding: 14px 14px;
+
+		svg{
+			width: 16px;
+			height: 16px;
+			fill: $white;
+		}
+
+		@media (max-width: $mw-390) {
+			display: flex;		
 		}
 	}
 }
