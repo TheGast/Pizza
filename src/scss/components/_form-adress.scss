@@ -1,6 +1,10 @@
 .form-adress {
 	margin-bottom: 23px;
 
+	@media (max-width: $mw-390) {
+		margin-bottom: 32px;
+	}
+
 	&__wrapper{
 		display: flex;
 		align-items: center;
@@ -12,10 +16,12 @@
 		@media (max-width: $mw-390) {
 			flex-wrap: wrap;
 			padding-top: 23px;
+			padding-bottom: 20px;
 		}
 	}
 
 	&__label {
+		position: relative;
 		display: flex;
 		align-items: center;
 		flex-grow: 1;
@@ -89,6 +95,9 @@
 	}
 
 	&__btn-mobile{
+		position: absolute;
+		right: 0;
+		top: 0;
 		display: none;
 		align-items: center;
 		padding: 14px 14px;

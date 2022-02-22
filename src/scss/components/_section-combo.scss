@@ -2,6 +2,10 @@
 
   &__top{
     margin-bottom: 28px;
+
+    @media (max-width: $mw-390) {
+      margin-bottom: 20px;
+    }
   }
 }
 

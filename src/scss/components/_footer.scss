@@ -3,9 +3,24 @@
   padding-bottom: 31px;
   border-top: 1px solid $gallery;
 
+  @media (max-width: $mw-390) {
+    padding-top: 23px;
+    padding-bottom: 0;
+  }
+
   &__container {
+    position: relative;
     display: flex;
     justify-content: space-between;
+
+    @media (max-width: $mw-390) {
+      flex-direction: column;
+      padding-bottom: 41px;
+      border-bottom: 1px solid $gallery;
+    }
+    @media (max-width: $mw-350) {
+      padding-bottom: 41px;
+    }
   }
 
   &__column-left {
@@ -14,46 +29,93 @@
     justify-content: space-between;
     max-width: 251px;
     width: 100%;
+
+    @media (max-width: $mw-390) {
+      margin-bottom: 20px;
+    }
   }
 
   &__logo {
     display: block;
     width: 176px;
+
+    @media (max-width: $mw-390) {
+      width: 141px;
+    }
   }
 
   &__copyright {
+    position: absolute;
+    bottom: 11px;
+    left: 20px;
     font-size: 16px;
     line-height: 22px;
+
+    @media (max-width: $mw-390) {
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 
   &__nav {
     display: flex;
     justify-content: space-between;
     margin-right: 34px;
+
+    @media (max-width: $mw-390) {
+      flex-direction: column;
+      margin-right: 0;
+      margin-bottom: 0px;
+      margin-bottom: 24px;
+    }
   }
 
   &__nav-list {
     max-width: 245px;
 
+    @media (max-width: $mw-390) {
+      min-width: 100%;
+    }
+
     &:not(:last-child) {
       margin-right: 132px;
+
+      @media (max-width: $mw-390) {
+        margin-right: 0;
+        margin-bottom: 24px;
+      }
     }
   }
 
   &__nav-item {
     &:not(:last-child) {
       margin-bottom: 20px;
+
+      @media (max-width: $mw-390) {
+        margin-bottom: 15px;
+      }
     }
   }
 
   &__column-right {
     max-width: 300px;
     width: 100%;
+    flex-grow: 1;
+
+    @media (max-width: $mw-390) {
+      min-width: 100%;
+      padding-bottom: 25px;
+      border-bottom: 1px solid $gallery;
+    }
   }
 
   &__contact-item {
     &:not(:last-child) {
       margin-bottom: 20px;
+
+      @media (max-width: $mw-390) {
+        margin-bottom: 18px;
+      }
     }
   }
 

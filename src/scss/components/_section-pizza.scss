@@ -1,7 +1,15 @@
 .pizza{
 	margin-bottom: 46px;
 
+	@media (max-width: $mw-390) {
+		margin-bottom: 32px;
+	}
+
 	&__top{
 		margin-bottom: 30px;
+
+		@media (max-width: $mw-390) {
+			margin-bottom: 20px;
+		}
 	}
 }
