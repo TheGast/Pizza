@@ -115,6 +115,20 @@ p {
 	}
 }
 
+.menu-title{
+	margin-bottom: 23px;
+	font-family: "Inter", sans-serif;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 28px;
+
+	@media (max-width: $mw-575) {
+		font-size: 14px;
+		line-height: 18px;
+		margin-bottom: 19px;
+	}
+}
+
 // Плашки на карточку New и Hit
 .new,
 .hit {
@@ -154,71 +168,5 @@ p {
 	}
 }
 
-//Общие стили для футера
-.footer-title {
-	margin-bottom: 23px;
-	font-family: "Inter", sans-serif;
-	font-weight: 600;
-	font-size: 20px;
-	line-height: 28px;
 
-	@media (max-width: $mw-575) {
-		font-size: 14px;
-		line-height: 18px;
-		margin-bottom: 19px;
-  }
-}
 
-.footer-link {
-	position: relative;
-	line-height: 22px;
-	transition: all 0.2s ease;
-
-	@media (max-width: $mw-1199) {
-		font-size: 15px;
-		line-height: 18px;
-  }
-
-	@media (max-width: $mw-767) {
-		font-size: 14px;
-  }
-
-	&--tel {
-		&::before {
-			background-image: url("../img/icons/phone.svg");
-		}
-	}
-
-	&--adress {
-		&::before {
-			background-image: url("../img/icons/location-footer.svg");
-		}
-	}
-
-	&--insta {
-		&::before {
-			background-image: url("../img/icons/instagram.svg");
-		}
-	}
-
-	&--facebok {
-		&::before {
-			background-image: url("../img/icons/facebook.svg");
-		}
-	}
-
-	&::before {
-		position: absolute;
-		content: "";
-		left: 1px;
-		top: 50%;
-		transform: translateY(-50%);
-		width: 20px;
-		height: 20px;
-		background-repeat: no-repeat;
-	}
-
-	&:hover {
-		color: $pumpkin;
-	}
-}

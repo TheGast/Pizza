@@ -1,0 +1,97 @@
+.contact-list{
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+
+      @media (max-width: $mw-575) {
+        margin-bottom: 18px;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    padding-left: 32px;
+    line-height: 22px;
+    transition: all 0.2s ease;
+  
+    @media (max-width: $mw-1199) {
+      font-size: 15px;
+      line-height: 18px;
+    }
+  
+    @media (max-width: $mw-767) {
+      font-size: 14px;
+    }
+  
+    &--tel {
+      &::before {
+        background-image: url("../img/icons/phone.svg");
+      }
+    }
+  
+    &--adress {
+      &::before {
+        background-image: url("../img/icons/location-footer.svg");
+      }
+    }
+  
+    &::before {
+      position: absolute;
+      content: "";
+      left: 1px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-repeat: no-repeat;
+    }
+  
+    &:hover {
+      color: $pumpkin;
+    }
+  }
+
+  &__contact-link {
+    
+  }
+
+  
+
+ 
+}
+
+.social {
+  display: flex;
+  align-items: center;
+
+  &__link {
+
+    &:not(:last-child) {
+      margin-right: 25px;
+    }
+
+    &--insta {
+      &::before {
+        background-image: url("../img/icons/instagram.svg");
+      }
+    }
+  
+    &--facebok {
+      &::before {
+        background-image: url("../img/icons/facebook.svg");
+      }
+    }
+  
+    &::before {
+      position: absolute;
+      content: "";
+      left: 1px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-repeat: no-repeat;
+    }
+  }
+}

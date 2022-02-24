@@ -8,10 +8,7 @@
   &__list {    
     display: flex;
     justify-content: space-between;
-    
-    @media (max-width: $mw-1199) {
-      overflow-x: scroll;
-    }
+    overflow-x: scroll;
   }
 }
 
@@ -31,9 +28,7 @@
   }
 
   &:not(:last-child){
-    @media (max-width: $mw-1199) {
-     margin-right: 20px;
-    }
+    margin-right: 20px;
   }
 
   &:hover{

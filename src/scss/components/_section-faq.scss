@@ -80,10 +80,15 @@
     font-size: 16px;
     line-height: 20px;
     color: $pumpkin;
+    transition: all .2s ease;
 
     @media (max-width: $mw-575) {
       font-size: 14px;
       line-height: 20px;
+    }
+
+    &:hover{
+      color: $cinnabar;
     }
   }
 }
