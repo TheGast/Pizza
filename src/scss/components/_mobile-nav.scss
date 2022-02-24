@@ -17,13 +17,13 @@
 .mobile-nav {
   z-index: 10;
   display: none;
- 
 
   @media (max-width: $mw-991) {
     display: block;
   }
 
   &__wrapper {
+    display: block;
     position: absolute;
     top: calc(100% + 1px);
     left: 0;
