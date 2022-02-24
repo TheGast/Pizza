@@ -1,0 +1,10 @@
+const BurgerBtn = document.querySelector(".burger");
+const MenuMobile = document.querySelector(".mobile-nav");
+const DocumentBody = document.querySelector("body");
+
+BurgerBtn.addEventListener("click", function(){
+	MenuMobile.classList.toggle('opened');
+	BurgerBtn.classList.toggle('opened');
+	DocumentBody.classList.toggle('hidden-on');
+})
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJzY3JpcHQuanMiXSwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgQnVyZ2VyQnRuID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5idXJnZXJcIik7XHJcbmNvbnN0IE1lbnVNb2JpbGUgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLm1vYmlsZS1uYXZcIik7XHJcbmNvbnN0IERvY3VtZW50Qm9keSA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCJib2R5XCIpO1xyXG5cclxuQnVyZ2VyQnRuLmFkZEV2ZW50TGlzdGVuZXIoXCJjbGlja1wiLCBmdW5jdGlvbigpe1xyXG5cdE1lbnVNb2JpbGUuY2xhc3NMaXN0LnRvZ2dsZSgnb3BlbmVkJyk7XHJcblx0QnVyZ2VyQnRuLmNsYXNzTGlzdC50b2dnbGUoJ29wZW5lZCcpO1xyXG5cdERvY3VtZW50Qm9keS5jbGFzc0xpc3QudG9nZ2xlKCdoaWRkZW4tb24nKTtcclxufSkiXSwiZmlsZSI6InNjcmlwdC5qcyJ9

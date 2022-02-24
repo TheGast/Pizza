@@ -15,20 +15,23 @@
 }
 
 .mobile-nav {
+  position: absolute;
+  left: 0;
+  right: 0;
   z-index: 10;
-  display: none;
+  top: calc(100% + 1px);
+  height: 0;
+  transition: all 0.3s ease;
 
-  @media (max-width: $mw-991) {
+  &.opened {
     display: block;
+    height: calc(100vh - 100px);
   }
 
   &__wrapper {
-    display: block;
-    position: absolute;
-    top: calc(100% + 1px);
-    left: 0;
-    right: 0;
+    height: 100%;
     background-color: #fff;
+    overflow-y: scroll;
   }
 }
 
@@ -45,22 +48,46 @@
   }
 
   &__line {
+    position: absolute;
     width: 100%;
     height: 2px;
     background-color: #000;
     border-radius: 1px;
+    transition: all 0.3s ease;
 
+    &--one {
+      top: 0;
+    }
+    &--two {
+      top: 50%;
+      transform: translateY(-50%);
+    }
     &--three {
+      bottom: 0;
       width: 63%;
+    }
+  }
+
+  &.opened {
+    .burger__line {
+      top: 50%;
+      transform: translateY(-50%);
+      &--one {
+        transform: rotate(45deg);
+      }
+      &--two {
+        transform: rotate(-45deg);
+      }
+      &--three {
+        display: none;
+      }
     }
   }
 }
 
 .menu-mobile {
   width: 100%;
-  padding-left: 20px;
-  padding-top: 21px;
-  padding-bottom: 20px;
+  padding: 20px;
   border-top: 1px solid $gallery;
   border-bottom: 1px solid $gallery;
 
@@ -75,9 +102,7 @@
 
 .contact-list--mobile {
   font-family: "Inter", sans-serif;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-bottom: 73px;
+  padding: 20px 20px 73px 20px;
   border-bottom: 1px solid $gallery;
 }
 

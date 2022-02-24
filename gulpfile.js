@@ -50,6 +50,14 @@ const scss = function(){
     .pipe(browserSync.stream());
 }
 
+//Обработка JS
+const js = function(){
+  return src("./src/js/*.js", { sourcemaps: true })
+    .pipe(dest("./public/js", { sourcemaps: true }))
+    .pipe(browserSync.stream());
+}
+
+
 //Обработка IMAGES
 const images = function(){
   return src(["./src/img/**/*.{jpg,png,jpeg,gif,svg}", "!./src/img/svg/**/*"])
@@ -129,6 +137,7 @@ const server = function(){
 const watcher = function(){
   watch("./src/html/**/*.html", html);
   watch("./src/scss/**/*.scss", scss);
+  watch("./src/js/**/*.js", js);
   watch("./src/img/**/*.{jpg,jpeg,png,gif,svg}", series(images, spritesvg));
   watch("./src/font/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}", fonts); 
 }
@@ -145,12 +154,12 @@ exports.spritesvg = spritesvg;
 //Сборка
 exports.dev = series(
   clear,
-  parallel(html, scss, images, spritesvg, fonts),
+  parallel(html, scss, js, images, spritesvg, fonts),
   parallel(watcher, server)
 );
 
 //Продакшн
 exports.build = series(
   clear,
-  parallel(html, scss, images, spritesvg, fonts),  
+  parallel(html, scss, js, images, spritesvg, fonts),  
 );
