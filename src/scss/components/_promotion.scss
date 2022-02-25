@@ -8,7 +8,11 @@
   &__list {    
     display: flex;
     justify-content: space-between;
-    overflow-x: scroll;
+
+    @media (max-width: $mw-1319) {
+      margin-bottom: 33px;
+      overflow-x: scroll;
+    }
   }
 }
 

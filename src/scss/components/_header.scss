@@ -38,11 +38,17 @@
     }
   }
 
-  &__city-list {
+  &__city{
+    position: relative;
+  }
+
+  &__current-city {
     position: relative;
     margin-right: 40px;
     padding-left: 28px;
     padding-right: 20px;
+    cursor: pointer;
+
 
     @media (max-width: $mw-767) {
       padding-right: 0;
@@ -74,10 +80,47 @@
       height: 12px;
       top: 6px;
       right: 0;
+      transition: all .2s ease;
 
       @media (max-width: $mw-767) {
         display: none;
       }
+    }
+
+    &.opened{
+      &::after{
+        top: 3px;
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &__city-list{
+    padding: 0 20px;
+    height: 0;
+    z-index: 12;
+    position: absolute;
+    background-color: $white;
+    top: calc(100% + 10px);
+    left: 13%;
+    overflow: hidden;
+    box-shadow: 4px 4px 23px 0px rgba(34, 60, 80, 0.2);
+    transition: all .2s ease;
+
+    &.opened{
+      padding: 15px 20px;
+      height: auto;
+      overflow: visible;
+    }
+  }
+
+  &__city-item{
+    cursor: pointer;
+
+    &:not(:last-child){
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid $gallery;
     }
   }
 
