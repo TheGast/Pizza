@@ -1,0 +1,90 @@
+.card {
+	&__wrapper {
+		max-width: 1070px;
+		background: $white;
+		border-radius: 24px;
+		display: flex;
+		align-items: center;
+		padding: 32px 20px 20px 60px;
+	}
+
+	&__img {
+		max-width: 450px;
+		width: 100%;
+		margin-right: 60px;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__form-title {
+		font-family: "Inter", sans-serif;
+		font-weight: 600;
+		font-size: 20px;
+		line-height: 28px;
+		color: $gray;
+		margin: 0;
+		margin-bottom: 16px;
+	}
+}
+
+.card-item {
+	display: flex;
+	gap: 20px;
+}
+.card-checkbox {
+	position: relative;
+
+	&__deleted{
+		
+	}
+
+	&__input {
+		position: absolute;
+		width: 0;
+		height: 0;
+		left: 0;
+		top: 0;
+		visibility: hidden;
+
+		&:checked {
+			& ~ div {
+				.card-checkbox__fake-img {
+					svg {
+						fill: $pumpkin;
+					}
+				}
+			}
+		}
+	}
+
+	&__fake {
+		max-width: 105px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__fake-img {
+		border: 1px solid $gallery;
+		border-radius: 12px;
+		padding: 32px;
+		margin-bottom: 8px;
+
+		svg {
+			width: 40px;
+			height: 40px;
+			fill: #a5a5a5;
+		}
+	}
+
+	&__fake-name {
+		font-family: "Inter", sans-serif;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 18px;
+		text-align: center;
+	}
+}
