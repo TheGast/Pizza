@@ -8,9 +8,11 @@ body {
 	margin: 0;
 
 	&.hidden-on {
+		position: relative;
 		height: 100vh;
 		overflow: hidden;
 	}
+
 }
 
 * {
@@ -170,5 +172,33 @@ p {
 .hit {
 	&::before {
 		content: "хит";
+	}
+}
+
+//Кнопка фильтр
+
+.filter-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 9px 16px;
+	background: $white;
+	border: 1px solid $gallery;
+	border-radius: 6px;
+	font-family: "SF-Pro-Text", sans-serif;
+	font-size: 16px;
+	line-height: 22px;
+	color: $gray;
+	transition: all .2s ease;
+
+	&:hover{
+		color: $pumpkin;
+	}
+
+	svg{
+		width: 16px;
+		height: 16px;
+		fill: $pumpkin;
+		margin-right: 8px;
 	}
 }

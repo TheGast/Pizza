@@ -1,0 +1,148 @@
+.filter {
+  transition: all .2s ease;
+  &.bluer-on{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(25, 25, 25, 0.4);
+    backdrop-filter: blur(32px);
+
+    .filter__wrapper{
+      right: 0;
+    }
+  }
+
+  &__wrapper{    
+    position: absolute;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    padding: 32px 20px 12px;
+    max-width: 520px;
+    background-color: $white;
+    transition: all .2s ease;
+    overflow-y: scroll;
+  }
+
+  &__top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 40px;
+  }
+
+  &__btn-close{
+    width: 24px;
+    height: 24px;
+    position: relative;
+    transition: all .1s ease;
+
+    &:hover{
+      transform: scale(1.2);
+    }
+
+    &::before,
+    &::after{
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 2px;
+      background-color: #a5a5a5;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before{
+      transform: rotate(45deg);
+    }
+
+    &::after{
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__form-btns{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid $gallery;
+  }
+
+  &__form-btn{
+    max-width: 48%;
+    width: 100%;
+    border: 1px solid $pumpkin;
+
+    &--stroke{
+      background-color: $white;
+      color: $pumpkin;
+
+      &:hover{
+        color: $white;
+      }
+    }
+  }
+}
+
+.filter-item {
+  margin-bottom: 24px;
+
+  &__title {
+    margin: 0;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #a5a5a5;
+  }
+  &__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+
+.checkbox {
+  position: relative;
+
+  &__input {
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0;
+    top: 0;
+    visibility: hidden;
+
+    &:checked{
+      &~span{
+        background-color: $pumpkin;
+        color: $white;
+      }
+    }
+  }
+
+  &__fake {
+    display: block;
+    padding: 11px 16px;
+    border: 1px solid $gallery;
+    border-radius: 6px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    transition: all .2s ease;
+    cursor: pointer;
+  }
+}
+
