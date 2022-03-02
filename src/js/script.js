@@ -6,6 +6,9 @@ const CityList = document.querySelector(".header__city-list");
 const CurrentCity = document.querySelector(".header__current-city");
 const CityItems = document.querySelectorAll(".header__city-item");
 const FilterButton = document.querySelector(".filter-btn");
+const ProdButton = document.querySelector(".production-item__btn");
+
+console.log(ProdButton);
 
 
 
@@ -32,7 +35,6 @@ CityItems.forEach(function(item){
 
 FilterButton.addEventListener("click", function(){
 	const Filter = document.querySelector(".filter");
-	const FilterWrapper = document.querySelector(".filter__wrapper");
 	const BtnClose = document.querySelector(".filter__btn-close");
 
 	DocumentBody.classList.add("hidden-on");
@@ -45,6 +47,26 @@ FilterButton.addEventListener("click", function(){
 		else{
 			DocumentBody.classList.remove("hidden-on");
 			Filter.classList.remove("bluer-on");
+		}
+	})
+})
+
+//Карточка товара
+
+ProdButton.addEventListener("click", function(){
+	const Card = document.querySelector(".card");
+	// const BtnClose = document.querySelector(".filter__btn-close");
+
+	DocumentBody.classList.add("hidden-on");
+	Card.classList.add("bluer-on");
+
+	document.addEventListener("click", function(event){
+		if(event.target != Card && event.target != BtnClose){
+			event.stopPropagation();
+		}
+		else{
+			DocumentBody.classList.remove("hidden-on");
+			Card.classList.remove("bluer-on");
 		}
 	})
 })
