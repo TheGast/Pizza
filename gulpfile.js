@@ -1,4 +1,4 @@
-const { src, dest, watch, series, parallel} = require("gulp");
+const { src, dest, watch, series, parallel } = require("gulp");
 const browserSync = require("browser-sync").create();
 const Delete = require("del");
 
@@ -35,79 +35,87 @@ const html = () => src("./src/html/*.html")
 
 
 //Обработка SCSS
-const scss = function(){
+const scss = function () {
   return src("./src/scss/*.scss", { sourcemaps: true })
-    .pipe(Sass())  
+    .pipe(Sass())
     .pipe(AutoPrefixer())
     .pipe(ShortHand())
     .pipe(GroupMedia())
-    .pipe(Size({ title: "style.css"}))
+    .pipe(Size({ title: "style.css" }))
     .pipe(dest("./public/css", { sourcemaps: true }))
     .pipe(Rename({ suffix: ".min" }))
     .pipe(CssO())
-    .pipe(Size({ title: "style.min.css"}))
+    .pipe(Size({ title: "style.min.css" }))
     .pipe(dest("./public/css", { sourcemaps: true }))
     .pipe(browserSync.stream());
 }
 
 //Обработка JS
-const js = function(){
+const js = function () {
   return src("./src/js/*.js", { sourcemaps: true })
     .pipe(dest("./public/js", { sourcemaps: true }))
     .pipe(browserSync.stream());
 }
 
+// Перенос папки resourses
+
+const resourses = function () {
+  return src("./src/resourses/**/*")
+    .pipe(dest("./public/resourses"))
+    .pipe(browserSync.stream());
+}
+
 
 //Обработка IMAGES
-const images = function(){
+const images = function () {
   return src(["./src/img/**/*.{jpg,png,jpeg,gif,svg}", "!./src/img/svg/**/*"])
     .pipe(Plumber())
     .pipe(Newer("./public/img"))
     .pipe(ImageMin({
-        verbose: true
-    }))    
-    .pipe(dest("./public/img"));   
+      verbose: true
+    }))
+    .pipe(dest("./public/img"));
 }
 
-const spritesvg = function(){
+const spritesvg = function () {
   return src("./src/img/svg/**/*.svg")
-  .pipe(SpriteSvg({
-    shape: {
-      dimension: {
+    .pipe(SpriteSvg({
+      shape: {
+        dimension: {
           maxWidth: 500,
           maxHeight: 500
-      },
-      spacing: {
+        },
+        spacing: {
           padding: 0
-      },
-      transform: [{
+        },
+        transform: [{
           "svgo": {
-              "plugins": [
-                  { removeViewBox: false },
-                  { removeUnusedNS: false },
-                  { removeUselessStrokeAndFill: true },
-                  { cleanupIDs: false },
-                  { removeComments: true },
-                  { removeEmptyAttrs: true },
-                  { removeEmptyText: true },
-                  { collapseGroups: true },
-                  { removeAttrs: { attrs: '(fill|stroke|style)' } }
-              ]
+            "plugins": [
+              { removeViewBox: false },
+              { removeUnusedNS: false },
+              { removeUselessStrokeAndFill: true },
+              { cleanupIDs: false },
+              { removeComments: true },
+              { removeEmptyAttrs: true },
+              { removeEmptyText: true },
+              { collapseGroups: true },
+              { removeAttrs: { attrs: '(fill|stroke|style)' } }
+            ]
           }
-      }]
-  },
-  mode: {
-      symbol: {
-          dest : '.',
+        }]
+      },
+      mode: {
+        symbol: {
+          dest: '.',
           sprite: 'sprite.svg'
+        }
       }
-  }
-  }))
-  .pipe(dest("./public/img")); 
+    }))
+    .pipe(dest("./public/img"));
 }
 
 //Обработка FONTS
-const fonts = function(){
+const fonts = function () {
   return src("./src/font/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}")
     .pipe(Plumber())
     .pipe(Newer("./public/img"))
@@ -115,17 +123,17 @@ const fonts = function(){
     //   formats: ["ttf", "woff"]
     // }))    
     .pipe(Ttf2Woff2())
-    .pipe(dest("./public/font"));   
+    .pipe(dest("./public/font"));
 
 }
 
 //Удаление директории
-const clear = function(){
-  return Delete("./public");
+const clear = function () {
+  return Delete("./public/**/.**");
 }
 
 //Сервер
-const server = function(){
+const server = function () {
   browserSync.init({
     server: {
       baseDir: "./public"
@@ -134,12 +142,13 @@ const server = function(){
 }
 
 //Наблюдатель
-const watcher = function(){
+const watcher = function () {
   watch("./src/html/**/*.html", html);
   watch("./src/scss/**/*.scss", scss);
   watch("./src/js/**/*.js", js);
+  watch("./src/resourses/**/*", resourses);
   watch("./src/img/**/*.{jpg,jpeg,png,gif,svg}", series(images, spritesvg));
-  watch("./src/font/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}", fonts); 
+  watch("./src/font/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}", fonts);
 }
 
 //Задачи
@@ -154,12 +163,12 @@ exports.spritesvg = spritesvg;
 //Сборка
 exports.dev = series(
   clear,
-  parallel(html, scss, js, images, spritesvg, fonts),
+  parallel(html, scss, js, images, spritesvg, fonts, resourses),
   parallel(watcher, server)
 );
 
 //Продакшн
 exports.build = series(
   clear,
-  parallel(html, scss, js, images, spritesvg, fonts),  
+  parallel(html, scss, js, images, spritesvg, fonts, resourses),
 );

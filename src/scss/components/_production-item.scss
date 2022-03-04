@@ -17,6 +17,7 @@
 	background: $white;
 	border: 1px solid $gallery;
 	border-radius: 12px;
+	overflow: hidden;
 
 	@media (max-width: $mw-1319) {
 		max-width: 23%;
