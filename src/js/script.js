@@ -5,7 +5,7 @@ const CitySelect = document.querySelector(".header__city");
 const CityList = document.querySelector(".header__city-list");
 const CurrentCity = document.querySelector(".header__current-city");
 const CityItems = document.querySelectorAll(".header__city-item");
-const FilterButton = document.querySelector(".filter-btn");
+const FilterButtons = document.querySelectorAll(".filter-btn");
 
 
 
@@ -15,6 +15,7 @@ BurgerBtn.addEventListener("click", function () {
 	BurgerBtn.classList.toggle('opened');
 	DocumentBody.classList.toggle('hidden-on');
 })
+// Бургер и меню
 
 // Выбор города
 CitySelect.addEventListener("click", function () {
@@ -27,29 +28,29 @@ CityItems.forEach(function (item) {
 		CurrentCity.innerHTML = item.textContent;
 	})
 })
+// Выбор города
 
 // Фильтры
+FilterButtons.forEach(function (item) {
+	item.addEventListener("click", function () {
+		const Filter = document.querySelector(".filter");
+		const BtnClose = document.querySelector(".filter__btn-close");
 
-FilterButton.addEventListener("click", function () {
-	const Filter = document.querySelector(".filter");
-	const BtnClose = document.querySelector(".filter__btn-close");
+		DocumentBody.classList.add("hidden-on");
+		Filter.classList.add("bluer-on");
 
-	DocumentBody.classList.add("hidden-on");
-	Filter.classList.add("bluer-on");
-
-	document.addEventListener("click", function (event) {
-		if (event.target != Filter && event.target != BtnClose) {
-			event.stopPropagation();
-		}
-		else {
-			DocumentBody.classList.remove("hidden-on");
-			Filter.classList.remove("bluer-on");
-		}
-	})
-})
-
-
-
+		document.addEventListener("click", function (event) {
+			if (event.target != Filter && event.target != BtnClose) {
+				event.stopPropagation();
+			}
+			else {
+				DocumentBody.classList.remove("hidden-on");
+				Filter.classList.remove("bluer-on");
+			}
+		});
+	});
+});
+// Фильтры
 
 // Получение данных из json файла
 
@@ -164,3 +165,36 @@ anchors.forEach(function (item) {
 	});
 });
 // Плавный переход к якорям
+
+// Развернуть/свернуть секцию faq
+const faqBtn = document.querySelector(".faq__btn");
+const faqTextWrapper = document.querySelector(".faq__text-wrapper");
+faqBtn.addEventListener("click", function () {
+	faqTextWrapper.classList.toggle("open");
+});
+
+
+// Развернуть/свернуть секцию faq
+
+
+// модальное окно логина
+const btnLogin = document.querySelector(".header__btn-login");
+const modal = document.querySelector(".modals");
+const modalClose = document.querySelector(".modal-close");
+const modalLogin = document.querySelector(".modal-login");
+
+btnLogin.addEventListener("click", function () {
+	modal.classList.add("is-open");
+	DocumentBody.classList.add("hidden-on");
+
+	document.addEventListener("click", function (event) {
+		if (event.target != modalClose && event.target != modal) {
+			event.stopPropagation();
+		}
+		else {
+			DocumentBody.classList.remove("hidden-on");
+			modal.classList.remove("is-open");
+		}
+	});
+});
+// модальное окно логина
