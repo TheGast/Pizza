@@ -259,6 +259,146 @@
     "img":"./resourses/img/snack/8.jpg",
     "price":"329",
     "popular":""
+  },
+
+  {
+    "type": "dessert",
+    "id": 1,
+    "title":"Десерт Тирамису",
+    "description":"",
+    "img":"./resourses/img/dessert/1.jpg",
+    "price":"319",
+    "popular":"hit"
+  },
+
+  {
+    "type": "dessert",
+    "id": 2,
+    "title":"Десерт Сантарэ",
+    "description":"",
+    "img":"./resourses/img/dessert/2.jpg",
+    "price":"319",
+    "popular":""
+  },
+
+  {
+    "type": "dessert",
+    "id": 3,
+    "title":"Десерт фисташковый с малиной",
+    "description":"",
+    "img":"./resourses/img/dessert/3.jpg",
+    "price":"319",
+    "popular":""
+  },
+
+  {
+    "type": "dessert",
+    "id": 4,
+    "title":"Десерт профитроли",
+    "description":"",
+    "img":"./resourses/img/dessert/4.jpg",
+    "price":"319",
+    "popular":"new"
+  },
+
+  {
+    "type": "dessert",
+    "id": 5,
+    "title":"Десерт Три шоколада",
+    "description":"",
+    "img":"./resourses/img/dessert/5.jpg",
+    "price":"319",
+    "popular":""
+  },
+
+  {
+    "type": "dessert",
+    "id": 6,
+    "title":"Десерт Шерри",
+    "description":"",
+    "img":"./resourses/img/dessert/6.jpg",
+    "price":"319",
+    "popular":""
+  },
+
+  {
+    "type": "drinks",
+    "id": 1,
+    "title":"Coca-Cola",
+    "description":"",
+    "img":"./resourses/img/drinks/1.jpg",
+    "price":"119",
+    "popular":""
+  },
+
+  {
+    "type": "drinks",
+    "id": 2,
+    "title":"Coca-Cola Zero",
+    "description":"",
+    "img":"./resourses/img/drinks/2.jpg",
+    "price":"159",
+    "popular":""
+  },
+
+  {
+    "type": "drinks",
+    "id": 3,
+    "title":"Тархун",
+    "description":"",
+    "img":"./resourses/img/drinks/3.jpg",
+    "price":"179",
+    "popular":""
+  },
+
+  {
+    "type": "drinks",
+    "id": 4,
+    "title":"Сок Rich (вишня)",
+    "description":"",
+    "img":"./resourses/img/drinks/4.jpg",
+    "price":"119",
+    "popular":""
+  },
+
+  {
+    "type": "drinks",
+    "id": 5,
+    "title":"Сок Rich (апельсиновый)",
+    "description":"",
+    "img":"./resourses/img/drinks/5.jpg",
+    "price":"119",
+    "popular":""
+  },
+
+  {
+    "type": "drinks",
+    "id": 6,
+    "title":"Fuzetea лимон",
+    "description":"",
+    "img":"./resourses/img/drinks/6.jpg",
+    "price":"119",
+    "popular":""
+  },
+
+  {
+    "type": "drinks",
+    "id": 7,
+    "title":"Fuzetea яблоко-киви",
+    "description":"",
+    "img":"./resourses/img/drinks/7.jpg",
+    "price":"119",
+    "popular":""
+  },
+
+  {
+    "type": "drinks",
+    "id": 8,
+    "title":"Вода родниковая Waterful",
+    "description":"",
+    "img":"./resourses/img/drinks/8.jpg",
+    "price":"99",
+    "popular":""
   }
   
 ]

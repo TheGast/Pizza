@@ -101,209 +101,29 @@ const loadProducts = function (quantity = 8) {
 					const prodItems = item.closest(".production-items");
 					// const BtnClose = document.querySelector(".filter__btn-close");
 
-					Card.innerHTML = "";
+					const cardImg = Card.querySelector(".card__img");
+					cardImg.innerHTML = "";
+
+					const cardFormTitle = Card.querySelector(".card__form-title");
+					cardFormTitle.innerHTML = "";
+
+					const cardFormBottom = Card.querySelector(".card__form-bottom");
+					cardFormBottom.innerHTML = "";
+
 
 					for (let i = 0; i < data.length; i++) {
 						if (prodItem.dataset.id == data[i].id && prodItems.dataset.type == data[i].type) {
-							Card.innerHTML = `
-								<div class="card__wrapper">
-									<div class="card__img">
-										<img src="${data[i].img}" alt="Image Pizza">
-									</div>
-									<form class="card__form" action="">
-										<h4 class="card__form-title">${data[i].title}</h4>
 
-										<div class="card__form-item card-item">
-
-											<label class="card-checkbox">
-												<input class="card-checkbox__input" type="checkbox" checked>
-												<div class="card-checkbox__fake">
-													<div class="card-checkbox__fake-img">
-														<svg>
-															<use xlink:href="img/sprite.svg#chiese"></use>
-														</svg>
-													</div>
-													<span class="card-checkbox__fake-name">Моцарелла</span>
-												</div>
-												<svg class="card-checkbox__deleted">
-													<use xlink:href="img/sprite.svg#deleted"></use>
-												</svg>
-											</label>
-
-											<label class="card-checkbox">
-												<input class="card-checkbox__input" type="checkbox" checked>
-												<div class="card-checkbox__fake">
-													<div class="card-checkbox__fake-img">
-														<svg>
-															<use xlink:href="img/sprite.svg#cucumber"></use>
-														</svg>
-													</div>
-													<span class="card-checkbox__fake-name">Огурцы маринованные</span>
-												</div>
-												<svg class="card-checkbox__deleted">
-													<use xlink:href="img/sprite.svg#deleted"></use>
-												</svg>
-											</label>
-
-											<label class="card-checkbox">
-												<input class="card-checkbox__input" type="checkbox" checked>
-												<div class="card-checkbox__fake">
-													<div class="card-checkbox__fake-img">
-														<svg>
-															<use xlink:href="img/sprite.svg#pepperoni"></use>
-														</svg>
-													</div>
-													<span class="card-checkbox__fake-name">Пепперони</span>
-												</div>
-												<svg class="card-checkbox__deleted">
-													<use xlink:href="img/sprite.svg#deleted"></use>
-												</svg>
-											</label>
-
-											<label class="card-checkbox">
-												<input class="card-checkbox__input" type="checkbox" checked>
-												<div class="card-checkbox__fake">
-													<div class="card-checkbox__fake-img">
-														<svg>
-															<use xlink:href="img/sprite.svg#sauce-stroke"></use>
-														</svg>
-													</div>
-													<span class="card-checkbox__fake-name">Томатный соус</span>
-												</div>
-												<svg class="card-checkbox__deleted">
-													<use xlink:href="img/sprite.svg#deleted"></use>
-												</svg>
-											</label>
-
-										</div>
-
-										<div class="card__form-item card-item card-item--radio">
-
-											<label class="card-radio">
-												<input class="card-radio__input" type="radio" name="dough_type" value="traditional" checked>
-												<div class="card-radio__fake">
-													Традиционное
-												</div>
-											</label>
-
-											<label class="card-radio">
-												<input class="card-radio__input" type="radio" name="dough_type" value="slim">
-												<div class="card-radio__fake">
-													Тонкое
-												</div>
-											</label>
-
-										</div>
-
-										<div class="card__form-item card-item card-item--radio">
-
-											<label class="card-radio">
-												<input class="card-radio__input" type="radio" name="size" value="20" checked>
-												<div class="card-radio__fake">
-													20 см
-												</div>
-											</label>
-
-											<label class="card-radio">
-												<input class="card-radio__input" type="radio" name="size" value="28">
-												<div class="card-radio__fake">
-													28см
-												</div>
-											</label>
-
-											<label class="card-radio">
-												<input class="card-radio__input" type="radio" name="size" value="33">
-												<div class="card-radio__fake">
-													30см
-												</div>
-											</label>
-
-										</div>
-
-										<div class="card__form-item card-item card-item--add">
-											<div class="card-item__title">Добавьте в пиццу</div>
-
-											<div class="card-item__wrapper">
-												<label class="card-checkbox">
-													<input class="card-checkbox__input card-checkbox__input--add" type="checkbox">
-													<div class="card-checkbox__fake">
-														<div class="card-checkbox__fake-img card-checkbox__fake-img--add">
-															<svg>
-																<use xlink:href="img/sprite.svg#chiese"></use>
-															</svg>
-														</div>
-														<span class="card-checkbox__fake-name">Моцарелла</span>
-													</div>
-													<svg class="card-checkbox__add">
-														<use xlink:href="img/sprite.svg#add"></use>
-													</svg>
-													<span class="card-checkbox__price">59 ₽</span>
-												</label>
-
-												<label class="card-checkbox">
-													<input class="card-checkbox__input card-checkbox__input--add" type="checkbox">
-													<div class="card-checkbox__fake">
-														<div class="card-checkbox__fake-img card-checkbox__fake-img--add">
-															<svg>
-																<use xlink:href="img/sprite.svg#mushroom"></use>
-															</svg>
-														</div>
-														<span class="card-checkbox__fake-name">Шампиньоны</span>
-													</div>
-													<svg class="card-checkbox__add">
-														<use xlink:href="img/sprite.svg#add"></use>
-													</svg>
-													<span class="card-checkbox__price">59 ₽</span>
-												</label>
-
-												<label class="card-checkbox">
-													<input class="card-checkbox__input card-checkbox__input--add" type="checkbox">
-													<div class="card-checkbox__fake">
-														<div class="card-checkbox__fake-img card-checkbox__fake-img--add">
-															<svg>
-																<use xlink:href="img/sprite.svg#onion"></use>
-															</svg>
-														</div>
-														<span class="card-checkbox__fake-name">Красный лук</span>
-													</div>
-													<svg class="card-checkbox__add">
-														<use xlink:href="img/sprite.svg#add"></use>
-													</svg>
-													<span class="card-checkbox__price">59 ₽</span>
-												</label>
-
-												<label class="card-checkbox">
-													<input class="card-checkbox__input card-checkbox__input--add" type="checkbox">
-													<div class="card-checkbox__fake">
-														<div class="card-checkbox__fake-img card-checkbox__fake-img--add">
-															<svg>
-																<use xlink:href="img/sprite.svg#pepper"></use>
-															</svg>
-														</div>
-														<span class="card-checkbox__fake-name">Сладкий перец</span>
-													</div>
-													<svg class="card-checkbox__add">
-														<use xlink:href="img/sprite.svg#add"></use>
-													</svg>
-													<span class="card-checkbox__price">59 ₽</span>
-												</label>
-											</div>
-
-										</div>
-
-										<div class="card__form-bottom">
-											<div class="card__form-total">
-												Итого: <span> ${data[i].price}</span> ₽
-											</div>
-											<div class="card__form-weight">
-												<span>400</span> г
-											</div>
-											<button class=" btn-reset btn">Добавить</button>
-										</div>
-
-									</form>
-								</div>
-							`;
+							cardImg.innerHTML = `<img src="${data[i].img}" alt="Image Pizza">`;
+							cardFormTitle.innerHTML = `${data[i].title}`;
+							cardFormBottom.innerHTML = `
+							<div class="card__form-total">
+								Итого: <span> ${data[i].price}</span> ₽
+							</div>
+							<div class="card__form-weight">
+								<span>400</span> г
+							</div>
+							<button class=" btn-reset btn">Добавить</button>`;
 						}
 					}
 
@@ -327,3 +147,20 @@ const loadProducts = function (quantity = 8) {
 };
 
 loadProducts(8);
+
+// Плавный переход к якорям
+const anchors = document.querySelectorAll(".navigation__item-btn");
+
+anchors.forEach(function (item) {
+	item.addEventListener("click", function (event) {
+		event.preventDefault();
+		const id = item.getAttribute("href");
+		const target = document.querySelector("" + id);
+
+		target.scrollIntoView({
+			behavior: "smooth",
+			block: "start"
+		});
+	});
+});
+// Плавный переход к якорям
