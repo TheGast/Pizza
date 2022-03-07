@@ -64,7 +64,7 @@
 	&__form-weight {
 		font-size: 14px;
 		line-height: 18px;
-		color: #a5a5a5;
+		color: $silver;
 		flex-grow: 1;
 	}
 }
@@ -106,7 +106,7 @@
 		height: 16px;
 		top: 8px;
 		right: 8px;
-		fill: #a5a5a5;
+		fill: $silver;
 		position: absolute;
 		display: block;
 	}
@@ -175,7 +175,7 @@
 		svg {
 			width: 40px;
 			height: 40px;
-			fill: #a5a5a5;
+			fill: $silver;
 		}
 
 		&--add {

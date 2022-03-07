@@ -203,3 +203,13 @@ p {
 		margin-right: 8px;
 	}
 }
+
+.content-item {
+	background: $white;
+	border: 1px solid $gallery;
+	border-radius: 12px;
+
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
+}

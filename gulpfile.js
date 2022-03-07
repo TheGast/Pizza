@@ -129,7 +129,7 @@ const fonts = function () {
 
 //Удаление директории
 const clear = function () {
-  return Delete("./public/**/.**");
+  return Delete("./public/");
 }
 
 //Сервер

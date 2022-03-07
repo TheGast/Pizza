@@ -169,11 +169,12 @@ anchors.forEach(function (item) {
 // Развернуть/свернуть секцию faq
 const faqBtn = document.querySelector(".faq__btn");
 const faqTextWrapper = document.querySelector(".faq__text-wrapper");
-faqBtn.addEventListener("click", function () {
-	faqTextWrapper.classList.toggle("open");
-});
 
-
+if (faqBtn) {
+	faqBtn.addEventListener("click", function () {
+		faqTextWrapper.classList.toggle("open");
+	});
+}
 // Развернуть/свернуть секцию faq
 
 
@@ -198,3 +199,80 @@ btnLogin.addEventListener("click", function () {
 	});
 });
 // модальное окно логина
+
+// свернуть/развернуть заказ
+const order = document.querySelector(".order");
+
+if (order) {
+	const orderItem = document.querySelectorAll(".order__item");
+
+	orderItem.forEach(function (item) {
+		const generalInfo = item.querySelector(".general-info");
+		const orderItemWrapper = item.querySelector(".order__item-wrapper");
+		const wrapperHeight = orderItemWrapper.scrollHeight;
+
+		generalInfo.addEventListener("click", function () {
+			if (orderItemWrapper.classList.contains("is-open")) {
+				orderItemWrapper.classList.remove("is-open");
+				generalInfo.classList.remove("is-open");
+				orderItemWrapper.style.height = 0;
+			}
+			else {
+				orderItemWrapper.classList.add("is-open");
+				generalInfo.classList.add("is-open");
+				orderItemWrapper.style.height = wrapperHeight + "px";
+			}
+		});
+	});
+
+}
+
+// свернуть/развернуть заказ
+
+// табы
+const tabs = document.querySelector(".tabs");
+
+if (tabs) {
+	const tabsNavigationItem = document.querySelectorAll(".tabs__navigation-item");
+	const tabsContentItem = document.querySelectorAll(".tabs__content-item");
+
+	tabsNavigationItem.forEach(function (item) {
+
+		item.addEventListener("click", function () {
+			const itemAttribute = item.getAttribute("data-tabs-nav");
+
+			tabsNavigationItem.forEach(function (item) {
+				item.classList.remove("active");
+				if (item.getAttribute("data-tabs-nav") == itemAttribute) {
+					item.classList.add("active");
+				}
+			});
+
+			tabsContentItem.forEach(function (item) {
+				item.classList.remove("is-open");
+				if (item.getAttribute("data-tabs-content") == itemAttribute) {
+					item.classList.add("is-open");
+				}
+			});
+
+		});
+	});
+
+	// изменение персональных данных
+	const settingsItemBtn=document.querySelectorAll(".settings__item-btn");
+
+	settingsItemBtn.forEach(function(item){
+		item.addEventListener("click", function(){
+			const settingsItemStatic = item.closest(".settings__item-static");
+			settingsItemStatic.style.display = "none";
+
+			const settingsItem = item.closest(".settings__item");
+			const settingsItemChange = settingsItem.querySelector(".settings__item-change")
+			settingsItemChange.style.display = "block";
+		});
+	
+	});
+	// изменение персональных данных
+
+}
+// табы
