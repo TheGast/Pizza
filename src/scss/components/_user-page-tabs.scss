@@ -40,7 +40,7 @@
 		border-radius: 6px;
 		cursor: pointer;
 
-		&.active{
+		&.active {
 			background-color: $pumpkin;
 			color: $white;
 		}
@@ -231,14 +231,10 @@
 		padding: 24px 32px;
 	}
 
-	&__item-static {
-	}
-
 	&__item-change {
 		display: none;
 	}
 
-	// .settings__item-top-row
 
 	&__item-top-row {
 		display: flex;
@@ -246,7 +242,7 @@
 		align-items: center;
 		margin-bottom: 16px;
 
-		&--nomargin{
+		&--nomargin {
 			margin-bottom: 0;
 		}
 	}
@@ -278,11 +274,43 @@
 		}
 	}
 
-	&__item-data {
+	&__item-lable {
+		margin-top: 16px;
+		display: flex;
+		cursor: pointer;
+	}
+
+	&__item-checkbox {
+		display: none;
+		visibility: hidden;
+
+		&:checked {
+			& ~ div {
+				background-color: none;
+				border-color: $silver;
+			}
+		}
+	}
+
+	&__item-fake {
+		width: 16px;
+		height: 16px;
+		border-radius: 2px;
+		background-color: $pumpkin;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-right: 12px;
+		border: 1px solid $pumpkin;
+
+		svg {
+			width: 11px;
+			height: 8px;
+			fill: $white;
+		}
 	}
 }
-.content-item {
-}
+
 .settings-datalist {
 	display: flex;
 	align-items: center;
@@ -338,3 +366,4 @@
 		}
 	}
 }
+
