@@ -236,6 +236,9 @@ if (tabs) {
 	const tabsNavigationItem = document.querySelectorAll(".tabs__navigation-item");
 	const tabsContentItem = document.querySelectorAll(".tabs__content-item");
 
+	console.log(tabsNavigationItem);
+	console.log(tabsContentItem);
+
 	tabsNavigationItem.forEach(function (item) {
 
 		item.addEventListener("click", function () {
@@ -277,6 +280,3 @@ if (tabs) {
 }
 // табы
 
-// слайдер
-
-// слайдер
