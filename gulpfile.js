@@ -1,174 +1,335 @@
-const { src, dest, watch, series, parallel } = require("gulp");
-const browserSync = require("browser-sync").create();
-const Delete = require("del");
+const {
+  src,
+  dest,
+  series,
+  watch
+} = require('gulp');
+const autoprefixer = require('gulp-autoprefixer');
+const cleanCSS = require('gulp-clean-css');
+const del = require('del');
+const browserSync = require('browser-sync').create();
+const sass = require('sass');
+const gulpSass = require('gulp-sass');
+const svgSprite = require('gulp-svg-sprite');
+const svgmin = require('gulp-svgmin');
+const cheerio = require('gulp-cheerio');
+const replace = require('gulp-replace');
+const fileInclude = require('gulp-file-include');
+const rev = require('gulp-rev');
+const revRewrite = require('gulp-rev-rewrite');
+const revDel = require('gulp-rev-delete-original');
+const htmlmin = require('gulp-htmlmin');
+const gulpif = require('gulp-if');
+const notify = require('gulp-notify');
+const image = require('gulp-imagemin');
+const {
+  readFileSync
+} = require('fs');
+const typograf = require('gulp-typograf');
+const webp = require('gulp-webp');
+const avif = require('gulp-avif');
+const mainSass = gulpSass(sass);
+const webpackStream = require('webpack-stream');
+const plumber = require('gulp-plumber');
+const path = require('path');
+const zip = require('gulp-zip');
+const rootFolder = path.basename(path.resolve());
 
-//Плагины
-const FileInclude = require("gulp-file-include");
-const HtmlMin = require("gulp-htmlmin");
-const Size = require("gulp-size");
-const Plumber = require("gulp-plumber");
-const Concat = require("gulp-concat");
-const AutoPrefixer = require("gulp-autoprefixer");
-const CssO = require("gulp-csso");
-const Rename = require("gulp-rename");
-const ShortHand = require("gulp-shorthand");
-const GroupMedia = require("gulp-group-css-media-queries");
-const Sass = require("gulp-sass")(require("sass"));
-const ImageMin = require("gulp-imagemin");
-const Newer = require("gulp-newer");
-const GulpFonter = require("gulp-fonter");
-const Ttf2Woff2 = require("gulp-ttf2woff2");
-const SpriteSvg = require("gulp-svg-sprite");
+// paths
+const srcFolder = './src';
+const buildFolder = './app';
+const paths = {
+  srcSvg: `${srcFolder}/img/svg/**.svg`,
+  srcImgFolder: `${srcFolder}/img`,
+  buildImgFolder: `${buildFolder}/img`,
+  srcScss: `${srcFolder}/scss/**/*.scss`,
+  buildCssFolder: `${buildFolder}/css`,
+  srcFullJs: `${srcFolder}/js/**/*.js`,
+  srcMainJs: `${srcFolder}/js/main.js`,
+  buildJsFolder: `${buildFolder}/js`,
+  srcPartialsFolder: `${srcFolder}/partials`,
+  resourcesFolder: `${srcFolder}/resources`,
+};
 
+let isProd = false; // dev by default
 
-//Обработка HTML
-const html = () => src("./src/html/*.html")
-  .pipe(Plumber())
-  .pipe(FileInclude())
-  .pipe(Size({ title: "До сжатия" }))
-  .pipe(HtmlMin({
-    collapseWhitespace: true
-  }))
-  .pipe(Size({ title: "После сжатия" }))
-  .pipe(dest("./public"))
-  .pipe(browserSync.stream())
-
-
-//Обработка SCSS
-const scss = function () {
-  return src("./src/scss/*.scss", { sourcemaps: true })
-    .pipe(Sass())
-    .pipe(AutoPrefixer())
-    .pipe(ShortHand())
-    .pipe(GroupMedia())
-    .pipe(Size({ title: "style.css" }))
-    .pipe(dest("./public/css", { sourcemaps: true }))
-    .pipe(Rename({ suffix: ".min" }))
-    .pipe(CssO())
-    .pipe(Size({ title: "style.min.css" }))
-    .pipe(dest("./public/css", { sourcemaps: true }))
-    .pipe(browserSync.stream());
+const clean = () => {
+  return del([buildFolder])
 }
 
-//Обработка JS
-const js = function () {
-  return src("./src/js/*.js", { sourcemaps: true })
-    .pipe(dest("./public/js", { sourcemaps: true }))
-    .pipe(browserSync.stream());
-}
-
-// Перенос папки resourses
-
-const resourses = function () {
-  return src("./src/resourses/**/*")
-    .pipe(dest("./public/resourses"))
-    .pipe(browserSync.stream());
-}
-
-
-//Обработка IMAGES
-const images = function () {
-  return src(["./src/img/**/*.{jpg,png,jpeg,gif,svg}", "!./src/img/svg/**/*"])
-    .pipe(Plumber())
-    .pipe(Newer("./public/img"))
-    .pipe(ImageMin({
-      verbose: true
+//svg sprite
+const svgSprites = () => {
+  return src(paths.srcSvg)
+    .pipe(
+      svgmin({
+        js2svg: {
+          pretty: true,
+        },
+      })
+    )
+    .pipe(
+      cheerio({
+        run: function ($) {
+          $('[fill]').removeAttr('fill');
+          $('[stroke]').removeAttr('stroke');
+          $('[style]').removeAttr('style');
+        },
+        parserOptions: {
+          xmlMode: true
+        },
+      })
+    )
+    .pipe(replace('&gt;', '>'))
+    .pipe(svgSprite({
+      mode: {
+        stack: {
+          sprite: "../sprite.svg"
+        }
+      },
     }))
-    .pipe(dest("./public/img"));
+    .pipe(dest(paths.buildImgFolder));
 }
 
-const spritesvg = function () {
-  return src("./src/img/svg/**/*.svg")
-    .pipe(SpriteSvg({
-      shape: {
-        dimension: {
-          maxWidth: 500,
-          maxHeight: 500
-        },
-        spacing: {
-          padding: 0
-        },
-        transform: [{
-          "svgo": {
-            "plugins": [
-              { removeViewBox: false },
-              { removeUnusedNS: false },
-              { removeUselessStrokeAndFill: true },
-              { cleanupIDs: false },
-              { removeComments: true },
-              { removeEmptyAttrs: true },
-              { removeEmptyText: true },
-              { collapseGroups: true },
-              { removeAttrs: { attrs: '(fill|stroke|style)' } }
-            ]
+// scss styles
+const styles = () => {
+  return src(paths.srcScss, { sourcemaps: !isProd })
+    .pipe(plumber(
+      notify.onError({
+        title: "SCSS",
+        message: "Error: <%= error.message %>"
+      })
+    ))
+    .pipe(mainSass())
+    .pipe(autoprefixer({
+      cascade: false,
+      grid: true,
+      overrideBrowserslist: ["last 5 versions"]
+    }))
+    .pipe(gulpif(isProd, cleanCSS({
+      level: 2
+    })))
+    .pipe(dest(paths.buildCssFolder, { sourcemaps: '.' }))
+    .pipe(browserSync.stream());
+};
+
+// styles backend
+const stylesBackend = () => {
+  return src(paths.srcScss)
+    .pipe(plumber(
+      notify.onError({
+        title: "SCSS",
+        message: "Error: <%= error.message %>"
+      })
+    ))
+    .pipe(mainSass())
+    .pipe(autoprefixer({
+      cascade: false,
+      grid: true,
+      overrideBrowserslist: ["last 5 versions"]
+    }))
+    .pipe(dest(paths.buildCssFolder))
+    .pipe(browserSync.stream());
+};
+
+// scripts
+const scripts = () => {
+  return src(paths.srcMainJs)
+    .pipe(plumber(
+      notify.onError({
+        title: "JS",
+        message: "Error: <%= error.message %>"
+      })
+    ))
+    .pipe(webpackStream({
+      mode: isProd ? 'production' : 'development',
+      output: {
+        filename: 'main.js',
+      },
+      module: {
+        rules: [{
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', {
+                  targets: "defaults"
+                }]
+              ]
+            }
           }
         }]
       },
-      mode: {
-        symbol: {
-          dest: '.',
-          sprite: 'sprite.svg'
-        }
-      }
+      devtool: !isProd ? 'source-map' : false
     }))
-    .pipe(dest("./public/img"));
+    .on('error', function (err) {
+      console.error('WEBPACK ERROR', err);
+      this.emit('end');
+    })
+    .pipe(dest(paths.buildJsFolder))
+    .pipe(browserSync.stream());
 }
 
-//Обработка FONTS
-const fonts = function () {
-  return src("./src/font/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}")
-    .pipe(Plumber())
-    .pipe(Newer("./public/img"))
-    // .pipe(GulpFonter({
-    //   formats: ["ttf", "woff"]
-    // }))    
-    .pipe(Ttf2Woff2())
-    .pipe(dest("./public/font"));
-
+// scripts backend
+const scriptsBackend = () => {
+  return src(paths.srcMainJs)
+    .pipe(plumber(
+      notify.onError({
+        title: "JS",
+        message: "Error: <%= error.message %>"
+      })
+    ))
+    .pipe(webpackStream({
+      mode: 'development',
+      output: {
+        filename: 'main.js',
+      },
+      module: {
+        rules: [{
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', {
+                  targets: "defaults"
+                }]
+              ]
+            }
+          }
+        }]
+      },
+      devtool: false
+    }))
+    .on('error', function (err) {
+      console.error('WEBPACK ERROR', err);
+      this.emit('end');
+    })
+    .pipe(dest(paths.buildJsFolder))
+    .pipe(browserSync.stream());
 }
 
-//Удаление директории
-const clear = function () {
-  return Delete("./public/");
+const resources = () => {
+  return src(`${paths.resourcesFolder}/**`)
+    .pipe(dest(buildFolder))
 }
 
-//Сервер
-const server = function () {
+const images = () => {
+  return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`])
+    .pipe(gulpif(isProd, image([
+      image.mozjpeg({
+        quality: 80,
+        progressive: true
+      }),
+      image.optipng({
+        optimizationLevel: 2
+      }),
+    ])))
+    .pipe(dest(paths.buildImgFolder))
+};
+
+const webpImages = () => {
+  return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`])
+    .pipe(webp())
+    .pipe(dest(paths.buildImgFolder))
+};
+
+const avifImages = () => {
+  return src([`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`])
+    .pipe(avif())
+    .pipe(dest(paths.buildImgFolder))
+};
+
+const htmlInclude = () => {
+  return src([`${srcFolder}/*.html`])
+    .pipe(fileInclude({
+      prefix: '@',
+      basepath: '@file'
+    }))
+    .pipe(typograf({
+      locale: ['ru', 'en-US']
+    }))
+    .pipe(dest(buildFolder))
+    .pipe(browserSync.stream());
+}
+
+const watchFiles = () => {
   browserSync.init({
     server: {
-      baseDir: "./public"
-    }
+      baseDir: `${buildFolder}`
+    },
   });
+
+  watch(paths.srcScss, styles);
+  watch(paths.srcFullJs, scripts);
+  watch(`${paths.srcPartialsFolder}/*.html`, htmlInclude);
+  watch(`${srcFolder}/*.html`, htmlInclude);
+  watch(`${paths.resourcesFolder}/**`, resources);
+  watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png,svg}`, images);
+  watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, webpImages);
+  watch(`${paths.srcImgFolder}/**/**.{jpg,jpeg,png}`, avifImages);
+  watch(paths.srcSvg, svgSprites);
 }
 
-//Наблюдатель
-const watcher = function () {
-  watch("./src/html/**/*.html", html);
-  watch("./src/scss/**/*.scss", scss);
-  watch("./src/js/**/*.js", js);
-  watch("./src/resourses/**/*", resourses);
-  watch("./src/img/**/*.{jpg,jpeg,png,gif,svg}", series(images, spritesvg));
-  watch("./src/font/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}", fonts);
+const cache = () => {
+  return src(`${buildFolder}/**/*.{css,js,svg,png,jpg,jpeg,webp,avif,woff2}`, {
+      base: buildFolder
+    })
+    .pipe(rev())
+    .pipe(revDel())
+    .pipe(dest(buildFolder))
+    .pipe(rev.manifest('rev.json'))
+    .pipe(dest(buildFolder));
+};
+
+const rewrite = () => {
+  const manifest = readFileSync('app/rev.json');
+  src(`${paths.buildCssFolder}/*.css`)
+    .pipe(revRewrite({
+      manifest
+    }))
+    .pipe(dest(paths.buildCssFolder));
+  return src(`${buildFolder}/**/*.html`)
+    .pipe(revRewrite({
+      manifest
+    }))
+    .pipe(dest(buildFolder));
 }
 
-//Задачи
-exports.html = html;
-exports.watch = watcher;
-exports.clear = clear;
-exports.scss = scss;
-exports.images = images;
-exports.font = fonts;
-exports.spritesvg = spritesvg;
+const htmlMinify = () => {
+  return src(`${buildFolder}/**/*.html`)
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
+    .pipe(dest(buildFolder));
+}
 
-//Сборка
-exports.dev = series(
-  clear,
-  parallel(html, scss, js, images, spritesvg, fonts, resourses),
-  parallel(watcher, server)
-);
+const zipFiles = (done) => {
+  del.sync([`${buildFolder}/*.zip`]);
+  return src(`${buildFolder}/**/*.*`, {})
+    .pipe(plumber(
+      notify.onError({
+        title: "ZIP",
+        message: "Error: <%= error.message %>"
+      })
+    ))
+    .pipe(zip(`${rootFolder}.zip`))
+    .pipe(dest(buildFolder));
+}
 
-//Продакшн
-exports.build = series(
-  clear,
-  parallel(html, scss, js, images, spritesvg, fonts, resourses),
-);
+const toProd = (done) => {
+  isProd = true;
+  done();
+};
+
+exports.default = series(clean, htmlInclude, scripts, styles, resources, images, webpImages, avifImages, svgSprites, watchFiles);
+
+exports.backend = series(clean, htmlInclude, scriptsBackend, stylesBackend, resources, images, webpImages, avifImages, svgSprites)
+
+exports.build = series(toProd, clean, htmlInclude, scripts, styles, resources, images, webpImages, avifImages, svgSprites, htmlMinify);
+
+exports.cache = series(cache, rewrite);
+
+exports.zip = zipFiles;
