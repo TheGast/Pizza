@@ -1,1 +1,17 @@
-// @include font-face("Muller", "../fonts/MullerRegular", 400, normal);
+//Начертанияm Шрифтов
+
+// thin				 		- 100
+// extra-light	 	- 200
+// light				 	- 300
+// regular			 	- 400
+// medium			 		- 500
+// semi-bold		 	- 600
+// bold				 		- 700
+// extra-bold	 		- 800
+// black				 	- 900
+
+@include font-face("Inter", "../fonts/Inter-Regular", 400, normal);
+@include font-face("Inter", "../fonts/Inter-SemiBold", 600, normal);
+@include font-face("SF-Pro-Text", "../fonts/SF-Pro-Text-Regular", 400, normal);
+@include font-face("SF-Pro-Text", "../fonts/SF-Pro-Text-Semibold", 600, normal);
+@include font-face("SF-Pro-Text", "../fonts/SF-Pro-Text-Bold", 700, normal);
