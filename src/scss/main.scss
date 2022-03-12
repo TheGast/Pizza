@@ -4,7 +4,10 @@
 @import "fonts";
 @import "settings";
 
+// Подключение малых компонентов
+@import "./components/cart-btn";
+@import "./components/login-btn";
+@import "./components/location";
+
 // подключения компонентов страницы
 @import "./components/header";
-
-

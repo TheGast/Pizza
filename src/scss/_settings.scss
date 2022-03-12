@@ -19,6 +19,8 @@ html {
   min-width: 320px;
   min-height: 100%;
   font-size: 16px;
+  color: var(--black-color);
+  background-color: var(--bg-gray-color);
 }
 
 img {
@@ -29,6 +31,7 @@ img {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .site-container {
@@ -84,6 +87,16 @@ a {
   max-width: var(--container-width);
 }
 
+.btn-primary {
+  border-radius: 6px;
+  font-family: "SF-Pro-Text", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  background: var(--primary-color);
+  transition: background 0.3s ease-in-out;
 
-
-
+  &:hover {
+    background-color: var(--red-color);
+  }
+}
