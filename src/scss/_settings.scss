@@ -93,10 +93,18 @@ a {
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
+  color: var(--white-color);
   background: var(--primary-color);
   transition: background 0.3s ease-in-out;
 
   &:hover {
     background-color: var(--red-color);
   }
+}
+
+.section-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
 }
