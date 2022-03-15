@@ -1,3 +1,5 @@
+import {openSubmenu} from './openSubmenu'
+
 const nav = document.querySelector('.nav');
 const headerNav = document.querySelector('.header-nav');
 const header = document.querySelector('.header');
@@ -7,6 +9,8 @@ const navListHtml = navContainer.innerHTML;
 const navHeight = nav.clientHeight;
 const diffHeight = nav.clientHeight - header.clientHeight;
 const navPaddingInitial = getComputedStyle(nav).getPropertyValue('padding-top');
+
+
 
 
 const navToHeader = () => {
@@ -26,9 +30,10 @@ const navToInitial = () => {
 
 }
 
-window.addEventListener('scroll', function () {
+window.addEventListener('scroll', () => {
   if ((window.pageYOffset - diffHeight) >= 0) {
     navToHeader();
+    openSubmenu();
   }
   else {
     navToInitial();
