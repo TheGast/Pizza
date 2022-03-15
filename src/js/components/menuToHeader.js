@@ -1,32 +1,39 @@
-b = document.querySelector('body');
-console.log(b);
 const nav = document.querySelector('.nav');
-const navList = document.querySelector('.nav__container');
-const headerNav = document.querySelector('.header__nav');
+const headerNav = document.querySelector('.header-nav');
 const header = document.querySelector('.header');
-const j = nav.clientHeight;
-const summ = nav.clientHeight - header.clientHeight;
-console.log(nav.clientHeight);
-const navToHeader = () => {
-  const h = navList.innerHTML;
+const navContainer = document.querySelector('.nav__container');
 
-  nav.style.paddingTop = j + 'px';
-  nav.innerHTML = '';
-  nav.classList.add('hidden');
-  // headerNav.innerHTML = h;
+const navListHtml = navContainer.innerHTML;
+const navHeight = nav.clientHeight;
+const diffHeight = nav.clientHeight - header.clientHeight;
+const navPaddingInitial = getComputedStyle(nav).getPropertyValue('padding-top');
+
+
+const navToHeader = () => {
+  nav.style.paddingTop = navHeight + 'px';
+  navContainer.innerHTML = '';
+  headerNav.classList.add('visible');
+  header.classList.add('hidden');
+  headerNav.innerHTML = navListHtml;
+}
+
+const navToInitial = () => {
+  nav.style.paddingTop = navPaddingInitial;
+  headerNav.innerHTML = '';
+  headerNav.classList.remove('visible');
+  header.classList.remove('hidden');
+  navContainer.innerHTML = navListHtml;
 
 }
 
 window.addEventListener('scroll', function () {
-  // console.log(window.pageYOffset - summ);
-  if ((window.pageYOffset - summ) >= 0) {
-
+  if ((window.pageYOffset - diffHeight) >= 0) {
     navToHeader();
   }
-
+  else {
+    navToInitial();
+  }
 });
-// console.log(nav.clientHeight);
-// console.log(header.clientHeight);
 
 
 

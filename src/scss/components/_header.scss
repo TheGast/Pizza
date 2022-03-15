@@ -40,6 +40,13 @@
   &__time-work {
     margin-right: 40px;
   }
+
+  &.hidden {
+    .header__row--top {
+      display: none;
+      padding: 0;
+    }
+  }
 }
 
 .check-adress {

@@ -1,0 +1,39 @@
+.header-nav {
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  .nav__list {
+    margin-right: 32px;
+  }
+
+  .nav__list-item:not(:last-child) {
+    margin-right: 32px;
+  }
+
+  .nav__link {
+    border: none;
+    padding: 0;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  .nav__link-icon {
+    display: none;
+  }
+
+  .nav__link-text {
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+  .nav-submenu {
+    display: block;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}
