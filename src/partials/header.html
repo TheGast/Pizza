@@ -3,15 +3,23 @@
   <div class="header__row header__row--top ">
     <div class="container header__container">
       <div class="header__row-columm">
-        <button class="location header__location btn-reset" aria-label="Открыть меню выбора города">
-          <svg class="location__icon">
-            <use xlink:href="img/sprite.svg#location"></use>
-          </svg>
-          <span class="location__name">Москва</span>
-          <svg class="location__arrow">
-            <use xlink:href="img/sprite.svg#arrow-down"></use>
-          </svg>
-        </button>
+        <div class="location header__location">
+          <button class="location__btn btn-reset" aria-label="Открыть меню выбора города">
+            <svg class="location__icon">
+              <use xlink:href="img/sprite.svg#location"></use>
+            </svg>
+            <span class="location__name">Москва</span>
+            <svg class="location__arrow">
+              <use xlink:href="img/sprite.svg#arrow-down"></use>
+            </svg>
+          </button>
+          <ul class="location__city-list list-reset">
+            <li class="location__city-item">Москва</li>
+            <li class="location__city-item">Волоколамск</li>
+            <li class="location__city-item">Нижний Новгород</li>
+            <li class="location__city-item">Саратов</li>
+          </ul>
+        </div>
         <a class="check-adress header__check-adress" href="#">Проверить адрес</a>
         <div class="time-delivery">Среднее время доставки*: <span>00:24:19</span></div>
       </div>

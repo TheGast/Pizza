@@ -1,4 +1,6 @@
 .cart-product {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 1px solid var(--gray-color);
   border-radius: 12px;
@@ -10,10 +12,14 @@
   }
 
   &__descr-wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
     padding: 0 20px 20px;
   }
 
   &__title {
+    flex-grow: 1;
     margin: 0;
     margin-bottom: 12px;
     font-family: "SF-Pro-Text", sans-serif;

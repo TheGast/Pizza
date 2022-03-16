@@ -1,7 +1,21 @@
 .location {
-  display: flex;
-  align-items: center;
-  transition: color 0.2s ease-in-out;
+  position: relative;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+
+    &.opened {
+      .location__arrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
 
   &__icon {
     margin-right: 8px;
@@ -19,10 +33,45 @@
 
   &__arrow {
     width: 12px;
-    height: 12px;
+    height: 8px;
+    transition: transform 0.3s ease-in-out;
   }
 
-  &:hover {
-    color: var(--primary-color);
+  &__city-list {
+    position: absolute;
+    left: 50%;
+    top: 130%;
+    border: 1px solid var(--gray-color);
+    border-radius: 12px;
+    padding: 20px;
+    width: 200px;
+    box-shadow: 0 2px 8px rgba(25 25 25 / 10%);
+    background-color: var(--white-color);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%);
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+    &.opened {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__city-item {
+    font-family: "SF-Pro-Text", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    transition: color 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+
+    &:hover {
+      color: var(--primary-color);
+    }
   }
 }

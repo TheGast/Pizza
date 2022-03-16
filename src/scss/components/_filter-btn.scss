@@ -1,0 +1,32 @@
+.filter-btn {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--gray-color);
+  border-radius: 6px;
+  padding: 0 16px;
+  height: 40px;
+  font-family: "SF-Pro-Text", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--black-color);
+  background: var(--white-color);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+  &__icon {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    fill: var(--primary-color);
+    transition: fill 0.2s ease-in-out;
+  }
+
+  &:hover {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+
+    .filter-btn__icon {
+      fill: var(--white-color);
+    }
+  }
+}

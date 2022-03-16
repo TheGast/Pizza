@@ -7,4 +7,14 @@
     justify-content: space-between;
     margin-bottom: 32px;
   }
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+  }
+
+  &__cart-product {
+    grid-column: 3 span;
+  }
 }
