@@ -3,6 +3,6 @@ import './components/menuToHeader';
 import './components/openSubmenu';
 import './components/cityChange';
 import './components/trimLine';
-import './components/showFilter';
+import './components/showModal';
 
 
