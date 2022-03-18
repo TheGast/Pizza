@@ -1,4 +1,5 @@
 import {openSubmenu} from './openSubmenu'
+import {scrollToAnhor} from './scrollToAnhor';
 
 const nav = document.querySelector('.nav');
 const headerNav = document.querySelector('.header-nav');
@@ -11,6 +12,7 @@ const diffHeight = nav.clientHeight - header.clientHeight;
 const navPaddingInitial = getComputedStyle(nav).getPropertyValue('padding-top');
 
 
+scrollToAnhor();
 
 
 const navToHeader = () => {
@@ -19,6 +21,8 @@ const navToHeader = () => {
   headerNav.classList.add('visible');
   header.classList.add('hidden');
   headerNav.innerHTML = navListHtml;
+
+  scrollToAnhor();
 }
 
 const navToInitial = () => {
@@ -28,6 +32,7 @@ const navToInitial = () => {
   header.classList.remove('hidden');
   navContainer.innerHTML = navListHtml;
 
+  scrollToAnhor();
 }
 
 window.addEventListener('scroll', () => {

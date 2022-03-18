@@ -4,5 +4,6 @@ import './components/openSubmenu';
 import './components/cityChange';
 import './components/trimLine';
 import './components/showModal';
+import './components/scrollToAnhor';
 
 
