@@ -1,51 +1,7 @@
 <div class="modals fix-block">
-  <div class="modals__filter filter" data-modal="filter">
-  <button class="modals-close btn-reset filter__close"></button>
-    <form class="filter__form" action="">
-      <div class="filter__form-wrapper">
-        <h2 class="filter__form-title">Фильтры</h2>
-          <div class="filter__section">
-            <div class="filter__section-title">Общее</div>
-            <ul class="filter__section-items list-reset">
-              <li class="filter__section-item">
-                <label class="checkbox">
-                  <input class="checkbox__input visually-hidden" type="checkbox">
-                  <span class="checkbox__input-fake">Хит</span>
-                </label>
-              </li>
-              <li class="filter__section-item">
-                <label class="checkbox filter-checkbox">
-                  <input class="checkbox__input filter-checkbox__input visually-hidden" type="checkbox">
-                  <span class="checkbox__input-fake filter-checkbox__input-fake">Хитdfgdfgdfgdfgdfgdfg</span>
-                </label>
-              </li>
-            </li>
-            <li class="filter__section-item">
-              <label class="checkbox">
-                <input class="checkbox__input visually-hidden" type="checkbox">
-                <span class="checkbox__input-fake">Хитdfgdfgdfgdfgdfgdfg</span>
-              </label>
-            </li>
-            </ul>
-          </div>
-      </div>
-    </form>
-  </div>
-  <div class="modals__login login" data-modal="login">
-  <button class="modals-close btn-reset login__close"></button>
-    <form class="login__form" action="" method="post">
-      <h2 class="login__form-title">Вход в аккаунт</h2>
-      <p class="login__form-descr">Сможете быстро оформлять заказы,
-        использовать бонусы</p>
-      <label class="login__form-label">
-        <span>Номер телефона</span>
-        <input class="login__form-input input" type="tel" placeholder="+7">
-      </label>
-      <button class="login__form-btn btn-reset btn-primary" type="submit">Войти</button>
-      <p class="login__form-annotation">Продолжая, вы соглашаетесь со сбором и обработкой персональных данных и
-        пользовательским соглашением</p>
-    </form>
-  </div>
+
+  @include('./modal-filter.html')
+  @include('./modal-login.html')
+  @include('./modal-product.html')
+
 </div>
-
-

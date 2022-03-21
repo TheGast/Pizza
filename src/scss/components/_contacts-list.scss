@@ -1,0 +1,28 @@
+.contacts-list {
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-family: "SF-Pro-Text", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  &__link-icon {
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+    fill: var(--primary-color);
+  }
+}

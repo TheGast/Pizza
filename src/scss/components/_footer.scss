@@ -1,0 +1,53 @@
+.footer {
+  border: 1px solid var(gray-color);
+  background-color: var(--white-color);
+
+  &__container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 32px 0;
+  }
+
+  &__nav-title {
+    margin-bottom: 22px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  &__nav-item {
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__nav-link {
+    font-family: "SF-Pro-Text", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  &__contacts-list {
+    margin-bottom: 20px;
+  }
+
+  &__copyright {
+    position: absolute;
+    left: 0;
+    bottom: 32px;
+  }
+}
+
+.copyright {
+  font-family: "SF-Pro-Text", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+}
