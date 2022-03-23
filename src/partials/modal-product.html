@@ -10,11 +10,12 @@
     </div>
     <div class="product__form-options product-options">
       <h2 class="product-options__title">Пепперони по-деревенски</h2>
+
       <div class="product-options__remove">
         <label class="checkbox-stroke product-options__remove-item">
           <input class="checkbox-stroke__input visually-hidden" type="checkbox">
           <div class="checkbox-stroke__input-fake-wrapper">
-            <span class="checkbox-stroke__input-fake-img">
+            <span class="checkbox-stroke__input-fake-img checkbox-stroke__input-fake-img--remove">
               <svg>
                 <use xlink:href="img/sprite.svg#chiese"></use>
               </svg>
@@ -25,7 +26,7 @@
         <label class="checkbox-stroke product-options__remove-item">
           <input class="checkbox-stroke__input visually-hidden" type="checkbox">
           <div class="checkbox-stroke__input-fake-wrapper">
-            <span class="checkbox-stroke__input-fake-img">
+            <span class="checkbox-stroke__input-fake-img checkbox-stroke__input-fake-img--remove">
               <svg>
                 <use xlink:href="img/sprite.svg#cucumber"></use>
               </svg>
@@ -36,7 +37,7 @@
         <label class="checkbox-stroke product-options__remove-item">
           <input class="checkbox-stroke__input visually-hidden" type="checkbox">
           <div class="checkbox-stroke__input-fake-wrapper">
-            <span class="checkbox-stroke__input-fake-img">
+            <span class="checkbox-stroke__input-fake-img checkbox-stroke__input-fake-img--remove">
               <svg>
                 <use xlink:href="img/sprite.svg#pepperoni"></use>
               </svg>
@@ -47,7 +48,7 @@
         <label class="checkbox-stroke product-options__remove-item">
           <input class="checkbox-stroke__input visually-hidden" type="checkbox">
           <div class="checkbox-stroke__input-fake-wrapper">
-            <span class="checkbox-stroke__input-fake-img">
+            <span class="checkbox-stroke__input-fake-img checkbox-stroke__input-fake-img--remove">
               <svg>
                 <use xlink:href="img/sprite.svg#sauce-stroke"></use>
               </svg>
@@ -57,51 +58,90 @@
         </label>
       </div>
 
-      <div class="product-options__remove">
-        <label class="checkbox-stroke product-options__remove-item">
+      <div class="product-options__dough">
+        <label class="checkbox product-options__dough-item">
+          <input class="checkbox__input visually-hidden" name="dough" type="radio" checked>
+          <span class="checkbox__input-fake">Традиционное</span>
+        </label>
+        <label class="checkbox product-options__dough-item">
+          <input class="checkbox__input visually-hidden" name="dough" type="radio">
+          <span class="checkbox__input-fake">Тонкое</span>
+        </label>
+      </div>
+
+      <div class="product-options__size">
+        <label class="checkbox product-options__size-item">
+          <input class="checkbox__input visually-hidden" name="size" type="radio" checked>
+          <span class="checkbox__input-fake">20 см</span>
+        </label>
+        <label class="checkbox product-options__size-item">
+          <input class="checkbox__input visually-hidden" name="size" type="radio">
+          <span class="checkbox__input-fake">28 см</span>
+        </label>
+        <label class="checkbox product-options__size-item">
+          <input class="checkbox__input visually-hidden" name="size" type="radio">
+          <span class="checkbox__input-fake">33 см</span>
+        </label>
+      </div>
+
+      <div class="product-options__add">
+        <h3 class="product-options__add-title">Добавьте в пиццу</h3>
+        <label class="checkbox-stroke product-options__add-item">
           <input class="checkbox-stroke__input visually-hidden" type="checkbox">
           <div class="checkbox-stroke__input-fake-wrapper">
-            <span class="checkbox-stroke__input-fake-img">
+            <span class="checkbox-stroke__input-fake-img checkbox-stroke__input-fake-img--add">
               <svg>
                 <use xlink:href="img/sprite.svg#chiese"></use>
               </svg>
             </span>
             <span class="checkbox-stroke__input-fake-name">Моцарелла</span>
+            <span class="checkbox-stroke__input-fake-price">59 ₽</span>
           </div>
         </label>
-        <label class="checkbox-stroke product-options__remove-item">
+        <label class="checkbox-stroke product-options__add-item">
           <input class="checkbox-stroke__input visually-hidden" type="checkbox">
           <div class="checkbox-stroke__input-fake-wrapper">
-            <span class="checkbox-stroke__input-fake-img">
+            <span class="checkbox-stroke__input-fake-img checkbox-stroke__input-fake-img--add">
               <svg>
                 <use xlink:href="img/sprite.svg#cucumber"></use>
               </svg>
             </span>
             <span class="checkbox-stroke__input-fake-name">Огурцы маринованные</span>
+            <span class="checkbox-stroke__input-fake-price">59 ₽</span>
           </div>
         </label>
-        <label class="checkbox-stroke product-options__remove-item">
+        <label class="checkbox-stroke product-options__add-item">
           <input class="checkbox-stroke__input visually-hidden" type="checkbox">
           <div class="checkbox-stroke__input-fake-wrapper">
-            <span class="checkbox-stroke__input-fake-img">
+            <span class="checkbox-stroke__input-fake-img checkbox-stroke__input-fake-img--add">
               <svg>
                 <use xlink:href="img/sprite.svg#pepperoni"></use>
               </svg>
             </span>
             <span class="checkbox-stroke__input-fake-name">Пепперони</span>
+            <span class="checkbox-stroke__input-fake-price">59 ₽</span>
           </div>
         </label>
-        <label class="checkbox-stroke product-options__remove-item">
+        <label class="checkbox-stroke product-options__add-item">
           <input class="checkbox-stroke__input visually-hidden" type="checkbox">
           <div class="checkbox-stroke__input-fake-wrapper">
-            <span class="checkbox-stroke__input-fake-img">
+            <span class="checkbox-stroke__input-fake-img checkbox-stroke__input-fake-img--add">
               <svg>
                 <use xlink:href="img/sprite.svg#sauce-stroke"></use>
               </svg>
             </span>
             <span class="checkbox-stroke__input-fake-name">Томатный соус</span>
+            <span class="checkbox-stroke__input-fake-price">59 ₽</span>
           </div>
         </label>
+      </div>
+
+      <div class="product__total">
+        <div class="product__total-result product-result">
+          <span class="product-result__price">Итого: 379 ₽</span>
+          <span class="product-result__weight">400 г</span>
+        </div>
+        <button class="product__total-btn btn-reset btn-primary">Добавить</button>
       </div>
     </div>
   </form>

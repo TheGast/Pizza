@@ -1,9 +1,24 @@
 .product {
+  position: relative;
   border-radius: 24px;
-  padding: 32px 20px 20px 60px;
-  width: 100%;
+  width: 0;
   max-width: 1070px;
   background-color: var(--white-color);
+  opacity: 0;
+  visibility: hidden;
+
+  &__close {
+    right: -57px;
+    top: 0;
+    width: 32px;
+    height: 32px;
+
+    &::before,
+    &::after {
+      height: 3px;
+      background-color: var(--white-color);
+    }
+  }
 
   &__form {
     display: flex;
@@ -14,6 +29,40 @@
     margin-right: 60px;
     width: 100%;
     max-width: 450px;
+  }
+
+  &__total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__total-btn {
+    padding: 13px 40px;
+  }
+
+  &.show {
+    padding: 60px 20px;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.product-result {
+  &__price {
+    margin-right: 12px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--primary-color);
+  }
+
+  &__weight {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--text-gray-color);
   }
 }
 
@@ -28,6 +77,7 @@
 
   &__remove {
     display: flex;
+    margin-bottom: 24px;
   }
 
   &__remove-item {
@@ -35,64 +85,51 @@
       margin-right: 20px;
     }
   }
-}
 
-.checkbox-stroke {
-  &__input-fake-wrapper {
+  &__add {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 105px;
-    cursor: pointer;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
   }
 
-  &__input-fake-img {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px;
-    border: 1px solid var(--gray-color);
-    border-radius: 12px;
+  &__add-title {
+    margin: 0;
+    margin-bottom: 16px;
     width: 100%;
-    height: 105px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+  }
 
-    &::after {
-      content: "";
-      position: absolute;
-      right: 8px;
-      top: 8px;
-      width: 16px;
-      height: 16px;
-      background-image: url("../img/cross.svg");
-      opacity: 0;
-      transition: opacity 0.2s ease-in-out;
-    }
-
-    svg {
-      width: 40px;
-      height: 40px;
-      fill: var(--primary-color);
-      transition: fill 0.2s ease-in-out;
+  &__add-item {
+    &:not(:last-child) {
+      margin-right: 20px;
     }
   }
 
-  &__input-fake-name {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
+  &__dough {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__dough-item {
+    width: 50%;
     text-align: center;
+
+    .checkbox__input-fake {
+      padding: 13px;
+    }
   }
-}
 
-.checkbox-stroke__input:checked + .checkbox-stroke__input-fake-wrapper {
-  .checkbox-stroke__input-fake-img {
-    &::after {
-      opacity: 1;
-    }
+  &__size {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+  }
 
-    svg {
-      fill: var(--text-gray-color);
-    }
+  &__size-item {
+    width: 33.333%;
+    text-align: center;
   }
 }
